@@ -7,17 +7,17 @@ using System.Text;
 
 namespace RobotPortal
 {
-    
+    [TestFixture]
     public class Temp
     {
         //Parametros
         private IWebDriver driver;
         private StringBuilder verificationErrors;
-        //CtrlActions actions = new CtrlActions();
         public string PathChromeDriver = "";
         public string PathDoExecutavel = "";
         public static string PathDoProjeto = "";
-        public CtrlChildActionSecurity security;
+        public CtrlDriverActions actions;
+
         [SetUp]
         public void Setup()
         {
@@ -37,12 +37,9 @@ namespace RobotPortal
             options.AddArgument("--start-maximized");
 
             driver = new ChromeDriver(service, options);
+            driver.Navigate().GoToUrl("http://192.168.137.1/portal");
 
             verificationErrors = new StringBuilder();
-
-            security = new CtrlChildActionSecurity();
-
-            driver.Navigate().GoToUrl("http://192.168.137.1/portal/login/");
         }
 
         [TearDown]
@@ -62,28 +59,11 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteLoginComUsuarioInativo()
+        public void TestSecurityLogin()
         {
+            CtrlChildActionReports childActions = new CtrlChildActionReports(driver);
 
-            security.LoginPortalUsuarioInativo();
-        }
-        [Test]
-        public void TesteLoginComSenhaIncorreta()
-        {
-
-            security.LoginPortalSenhaIncorreta();
-        }
-        [Test]
-        public void TesteLoginComSenhaCorreta()
-        {
-
-            security.LoginPortalSenhaCorreta();
-        }
-        [Test]
-        public void TesteRegrasTipoSenha()
-        {
-
-            security.NovoLoginPortalTestSenha();
+            childActions.Login();
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
+
+    <StartupObject></StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +16,6 @@
     <PackageReference Include="Selenium.Chrome.WebDriver" Version="77.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="78.0.3904.10500" />
     <PackageReference Include="System.Buffers" Version="4.5.0" />
     <PackageReference Include="System.Drawing.Common" Version="4.6.1" />
     <PackageReference Include="System.Memory" Version="4.5.3" />

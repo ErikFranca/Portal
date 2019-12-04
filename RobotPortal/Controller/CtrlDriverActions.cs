@@ -6,19 +6,36 @@ using System.Threading;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using OpenQA.Selenium.Interactions;
+using System.IO;
+using System.Net;
+using System.Text;
 
 namespace RobotPortal
 {
-    public class CtrlActions
+    public class CtrlDriverActions
     {
-        public static IWebDriver driver;
+        public IWebDriver driverAction;
 
-
-        public void SendKeys(By elemento, string conteudo)
+        public CtrlDriverActions(IWebDriver driver)
         {
-            driver.FindElement(elemento).SendKeys(conteudo);
+            this.driverAction = driver;
         }
 
+        public IWebElement FindById(string id)
+        {
+            return driverAction.FindElement(By.Id(id));
+        }
+        public IWebElement FindByCss(string Css)
+        {
+            return driverAction.FindElement(By.CssSelector(Css));
+        }
+
+        public void SendKeys(IWebElement element, string content)
+        {
+            element.SendKeys(content);
+        }
+        
         public void WaitLoad(By by)
         {
             if (!IsElementDisplayed(by))
@@ -37,37 +54,37 @@ namespace RobotPortal
 
         public void JavaScriptClick(IWebElement element)
         {
-            IJavaScriptExecutor executor = (IJavaScriptExecutor)driver;
+            IJavaScriptExecutor executor = (IJavaScriptExecutor)driverAction;
             executor.ExecuteScript("arguments[0].click();", element);
         }
 
 
         public void Clear(By elemento)
         {
-            driver.FindElement(elemento).Clear();
+            driverAction.FindElement(elemento).Clear();
         }
 
         public void Wait(By elemento)
         {
-            WebDriverWait Wait = new WebDriverWait(driver, TimeSpan.FromSeconds(40));
+            WebDriverWait Wait = new WebDriverWait(driverAction, TimeSpan.FromSeconds(60));
             Wait.Until(ExpectedConditions.ElementToBeClickable(elemento));
-            Thread.Sleep(4000);
+            Thread.Sleep(3000);
         }
 
 
-        public void Click(By elemento)
+        public void Click(IWebElement element)
         {
-            driver.FindElement(elemento).Click();
+            element.Click();
         }
 
-        public IWebElement GetElement(By elemento)
+        public IWebElement GetElement(By element)
         {
-            return driver.FindElement(elemento);
+            return driverAction.FindElement(element);
         }
 
-        public IList<IWebElement> ListElements(By elemento, By elementoFilho)
+        public IList<IWebElement> ListElements(By element, By elementoFilho)
         {
-            IWebElement webElement = GetElement(elemento);
+            IWebElement webElement = GetElement(element);
             IList<IWebElement> listaWeb = webElement.FindElements(elementoFilho);
             return listaWeb;
         }
@@ -75,18 +92,18 @@ namespace RobotPortal
 
         public void SelectByText(By elemento, string conteudo)
         {
-            new SelectElement(driver.FindElement(elemento)).SelectByText(conteudo);
+            new SelectElement(driverAction.FindElement(elemento)).SelectByText(conteudo);
         }
 
 
         public string GetElementText(By elemento)
         {
-            return driver.FindElement(elemento).Text;
+            return driverAction.FindElement(elemento).Text;
         }
 
         public void Load(By elemento)
         {
-            WebDriverWait Load = new WebDriverWait(driver, TimeSpan.FromSeconds(60));
+            WebDriverWait Load = new WebDriverWait(driverAction, TimeSpan.FromSeconds(60));
             Load.Until(ExpectedConditions.InvisibilityOfElementLocated(elemento));
         }
 
@@ -95,7 +112,7 @@ namespace RobotPortal
         {
             try
             {
-                driver.FindElement(by);
+                driverAction.FindElement(by);
                 return true;
             }
             catch (NoSuchElementException)
@@ -106,27 +123,27 @@ namespace RobotPortal
 
         public bool IsElementDisplayed(By by)
         {
-            return driver.FindElement(by).Displayed;
+            return driverAction.FindElement(by).Displayed;
         }
 
-        public void AssertIsElementPresent(By by)
-        {
-            Assert.IsTrue(IsElementPresent(by));
-        }
+   
 
         public void AssertTitleAreEqual(string validacao)
         {
-            Assert.AreEqual(validacao, driver.Title);
+            Assert.AreEqual(validacao, driverAction.Title);
         }
 
-        public void AssertAreEqual(string validacao, By by)
+        public void AssertAreEqual(string validate, IWebElement element)
         {
-            Assert.AreEqual(validacao, driver.FindElement(by).Text.ToString());
+            Assert.AreEqual(validate, element.Text.ToString());
+
         }
 
         public void AssertIsTrue(By by)
         {
             Assert.IsTrue(IsElementPresent(by));
         }
+
+
     }
 }
