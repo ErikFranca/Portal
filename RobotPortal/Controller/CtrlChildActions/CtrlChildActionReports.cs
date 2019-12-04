@@ -29,23 +29,7 @@ namespace RobotPortal
             driverChildAction = driver;
         }
 
-        public void Initialize()
-        {
-            FieldLogin = FindById("email");
-            FieldPassword = FindById("password");
-            ButtonEnter = FindByCss("#login_form > center > button");
-        }
-
-        //*Inicio dos metodos temporarios
-        public void Login()
-        {
-            Initialize();
-
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste");
-            SendKeys(FieldPassword, "bpPC9Qf9xSH2Z");
-            Click(ButtonEnter);
-        }
+        
         
         //Fim dos metodos temporários
         
