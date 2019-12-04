@@ -9,9 +9,11 @@ using System.Linq;
 
 namespace RobotPortal
 {
-    class CtrlActions
+    public class CtrlActions
     {
-        IWebDriver driver;
+        public static IWebDriver driver;
+
+
         public void SendKeys(By elemento, string conteudo)
         {
             driver.FindElement(elemento).SendKeys(conteudo);
