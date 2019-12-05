@@ -17,6 +17,7 @@ namespace RobotPortal
         public IWebElement FieldPassword;
         public IWebElement ButtonEnter;
         public IWebElement FormLogin;
+
         public CtrlChildActionSecurity(IWebDriver driver) : base(driver)
         {
             driverChildAction = driver;
@@ -34,8 +35,8 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste");
-            SendKeys(FieldPassword, "bpPC9Qf9xSH2Z");
+            SendKeys(FieldLogin, "UserCompiler");
+            SendKeys(FieldPassword, "Starline123@");
             Click(ButtonEnter);
         }
         public void LoginPortalUsuarioInativo()

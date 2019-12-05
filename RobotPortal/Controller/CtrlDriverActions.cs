@@ -30,6 +30,20 @@ namespace RobotPortal
         {
             return driverAction.FindElement(By.CssSelector(Css));
         }
+        public IWebElement FindByXpath(string xpath)
+        {
+            return driverAction.FindElement(By.XPath(xpath));
+        }
+        public IWebElement FindByName(string Name)
+        {
+            return driverAction.FindElement(By.Name(Name));
+        }
+
+        public void SwitchFrame(IWebElement Frame)
+        {
+            driverAction.SwitchTo().ParentFrame();
+            driverAction.SwitchTo().Frame(Frame);
+        }
 
         public void SendKeys(IWebElement element, string content)
         {
@@ -74,6 +88,7 @@ namespace RobotPortal
 
         public void Click(IWebElement element)
         {
+            Thread.Sleep(1000);
             element.Click();
         }
 
@@ -90,9 +105,9 @@ namespace RobotPortal
         }
 
 
-        public void SelectByText(By elemento, string conteudo)
+        public void SelectByText(IWebElement element, string conteudo)
         {
-            new SelectElement(driverAction.FindElement(elemento)).SelectByText(conteudo);
+            new SelectElement(element).SelectByText(conteudo);
         }
 
 

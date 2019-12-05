@@ -59,11 +59,28 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TestSecurityLogin()
+        public void TestFilterReport()
         {
-            CtrlChildActionReports childActions = new CtrlChildActionReports(driver);
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            childActions.Login();
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByName();
+        }
+
+        [Test]
+        public void TestCompileReport()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
+
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileSimpleReport();
+
         }
     }
 }
