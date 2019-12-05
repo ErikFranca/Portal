@@ -30,7 +30,10 @@ namespace RobotPortal
         {
             return driverAction.FindElement(By.CssSelector(Css));
         }
-
+        public IWebElement FindByClass(string Class)
+        {
+            return driverAction.FindElement(By.ClassName(Class));
+        }
         public void SendKeys(IWebElement element, string content)
         {
             element.SendKeys(content);

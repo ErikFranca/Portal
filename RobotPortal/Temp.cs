@@ -59,11 +59,47 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TestSecurityLogin()
+        public void LoginPortalUsuarioInativo()
         {
-            CtrlChildActionReports childActions = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
 
-            childActions.Login();
+            security.LoginPortalUsuarioInativo();
         }
+        [Test]
+        public void LoginPortalSenhaCorreta()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+
+            security.LoginPortalSenhaCorreta();
+        }
+        [Test]
+        public void LoginPortalSenhaIncorreta()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+
+            security.LoginPortalSenhaIncorreta();
+        }
+        [Test]
+        public void NovoLoginPortalTestSenha()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+
+            security.NovoLoginPortalTestSenha();
+        }
+        [Test]
+        public void TesteQuantidadeLoginsIncorretosExcedida()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+
+            security.TesteQuantidadeLoginsIncorretosExcedida();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCopiandoOutroUsuarioExistente()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCopiandoOutroUsuarioExistente();
+        }
+
     }
 }
