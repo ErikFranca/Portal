@@ -35,11 +35,6 @@ namespace RobotPortal
             FieldOrder = FindByCss("#ctn > div:nth-child(6) > div > div:nth-child(3) > div > button > div > div > div");
         }
 
-        public void FrameFilterInitialize()
-        {
-            SwitchFrame(FindById("iframe_opt"));
-            SwitchFrame(driverAction.FindElement(By.XPath("/html/body/iframe")));
-        }
 
         public void InitializeFilterBox()
         {
@@ -50,7 +45,6 @@ namespace RobotPortal
         {
             Thread.Sleep(3000);
             //Initializes      
-            FrameFilterInitialize();
             Initialize();
             InitializeFilterBox();
             

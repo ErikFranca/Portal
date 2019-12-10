@@ -66,7 +66,7 @@ namespace RobotPortal
         {
             Initialize();
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "helena.pera");
+            SendKeys(FieldLogin, "teste.2");
             SendKeys(FieldPassword, "Starline@123");
             Click(ButtonEnter);
 
@@ -78,7 +78,7 @@ namespace RobotPortal
 
             Initialize();
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "helena.pera");
+            SendKeys(FieldLogin, "teste.2");
             SendKeys(FieldPassword, "123546");
             Click(ButtonEnter);
             Validation();

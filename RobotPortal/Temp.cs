@@ -100,6 +100,138 @@ namespace RobotPortal
 
             newUser.TesteInclusaoUsuarioCopiandoOutroUsuarioExistente();
         }
+        [Test]
+        public void TesteInclusaoUsuarioAtribuindoPerfilExistente()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
 
+            newUser.TesteInclusaoUsuarioAtribuindoPerfilExistente();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifico()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilEspecifico();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao()
+        {
+            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+
+            newUser.TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao();
+        }
+        [Test]
+        public void TesteTrocaSenha()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteTrocaSenha();
+        }
+        [Test]
+        public void TesteTrocaEmail()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteTrocaEmail();
+        }
+        [Test]
+        public void TesteAtualizacaoInformacoesUsuarioExistente()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteAtualizacaoInformacoesUsuarioExistente();
+        }
+        [Test]
+        public void ValidarVisualizacaoPerfilUsuarios()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.ValidarVisualizacaoPerfilUsuarios();
+        }
+        [Test]
+        public void ValidarInativacaoPerfilConsultaUsuarios()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.ValidarInativacaoPerfilConsultaUsuarios();
+        }
+        [Test]
+        public void TesteAdicaoPermissaoPerfilConsultaUsuario()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteAdicaoPermissaoPerfilConsultaUsuario();
+        }
     }
 }

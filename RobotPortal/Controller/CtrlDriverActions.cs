@@ -16,7 +16,7 @@ namespace RobotPortal
     public class CtrlDriverActions
     {
         public IWebDriver driverAction;
-
+        public IWebElement checkbox;
         public CtrlDriverActions(IWebDriver driver)
         {
             this.driverAction = driver;
@@ -39,9 +39,8 @@ namespace RobotPortal
             return driverAction.FindElement(By.Name(Name));
         }
 
-        public void SwitchFrame(IWebElement Frame)
+        public void SwitchFrame(string Frame)
         {
-            driverAction.SwitchTo().ParentFrame();
             driverAction.SwitchTo().Frame(Frame);
         }
 
@@ -85,7 +84,46 @@ namespace RobotPortal
             Thread.Sleep(3000);
         }
 
+        public void NamePermission()
+        {
+            IList<IWebElement> listPermission = driverAction.FindElements(By.XPath("//*[@id='formPermission']/div[1]/div/table/tbody/tr/td[2]"));
+            int count = listPermission.Count();
+            List<string> list = new List<string>();
+            IList<IWebElement> oRadioButton = driverAction.FindElements(By.XPath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr/td[1]/center/div/input"));
+            int count1 = oRadioButton.Count();
 
+            for (int i = 1; i <= count; i++)
+            {
+                var permission = driverAction.FindElement(By.CssSelector("tbody > tr:nth-child(" + (i) + ") > td:nth-child(2)")).Text;
+                while (i <= count1)
+                {
+                    bool bValue = false;
+                    checkbox = FindByXpath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr[" + (i) + "]/td[1]/center/div/input");
+
+                    //checkbox = driverAction.FindElements(By.XPath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr["+(j)+"]/td[1]/center/div/input"));
+                    bValue = checkbox.Selected;
+                    if (bValue == true && permission.Contains("Ler relatórios de teste"))
+                    {
+                        list.Add(permission);
+                        break;
+                    }
+                    if (bValue == false && permission.Contains("Ler relatórios de teste"))
+                    {
+                        throw new ArgumentNullException();
+                    }
+                    else
+                    {
+                        break;
+                    }
+
+                }
+                                     
+                
+
+            }
+            
+        }
+        
         public void Click(IWebElement element)
         {
             Thread.Sleep(1000);
