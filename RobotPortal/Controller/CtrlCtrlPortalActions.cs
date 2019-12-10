@@ -21,6 +21,9 @@ namespace RobotPortal
         public IWebElement ReportMenu;
         public IWebElement ReportConsultMenu;
         public IWebElement ReportCompileMenu;
+        public IWebElement ButtonAllClients;
+        public IWebElement ButtonAllTeams;
+        public IWebElement ButtonMarisaClient;
 
         public CtrlCtrlPortalActions(IWebDriver driver) : base(driver)
         {
@@ -29,15 +32,28 @@ namespace RobotPortal
 
         public void Initialize()
         {
+            Thread.Sleep(3000);
             ArrowMenu = FindByCss("#open-nav > a");
             ReportMenu = FindByCss("#navBar-lateral > li:nth-child(3) > a");
             ReportConsultMenu = FindByCss("#submenu-report > li:nth-child(1) > a");
             ReportCompileMenu = FindByCss("#submenu-report > li:nth-child(2) > a");
         }
 
-        public void AcessMenuReport()
+        public void SelectClientInitialize()
         {
             Thread.Sleep(3000);
+            ButtonAllClients = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
+            ButtonMarisaClient = FindByXpath("//*[@class='card-img '][contains(@src,'marisa.png')]");
+        }
+
+        public void SelectTeamInitialize()
+        {
+            Thread.Sleep(3000);
+            ButtonAllTeams = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
+        }
+
+        public void AcessMenuReport()
+        {
             Initialize();
 
             
@@ -46,15 +62,43 @@ namespace RobotPortal
             Click(ReportConsultMenu);
         }
 
+        public void MenuReportFromHome()
+        {
+            Initialize();
+
+            Click(ReportMenu);
+            Click(ReportConsultMenu);
+        }
+
         public void AcessMenuCompile()
         {
-            Thread.Sleep(3000);
             Initialize();
 
 
             Click(ArrowMenu);
             Click(ReportMenu);
             Click(ReportCompileMenu);
+        }
+
+        public void ChooseAllClients()
+        {
+            SwitchFrame("iframe_opt");
+            SelectClientInitialize();
+            Click(ButtonAllClients);
+        }
+
+        public void ChooseMarisaClient()
+        {
+            SwitchFrame("iframe_opt");
+            SelectClientInitialize();
+            Click(ButtonAllClients);
+        }
+
+        public void ChooseTeam()
+        {
+            SelectTeamInitialize();
+            Click(ButtonAllTeams);
+
         }
 
     }

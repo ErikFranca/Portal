@@ -35,7 +35,7 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "UserCompiler");
+            SendKeys(FieldLogin, "teste");
             SendKeys(FieldPassword, "Starline123@");
             Click(ButtonEnter);
         }

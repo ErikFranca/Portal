@@ -59,7 +59,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TestFilterReport()
+        public void TestFilterReportName()
         {
             CtrlChildActionReports reports = new CtrlChildActionReports(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -67,7 +67,7 @@ namespace RobotPortal
 
             security.Login();
             portal.AcessMenuReport();
-            reports.FilterByName();
+            reports.FilterByReportName();
         }
 
         [Test]
@@ -82,5 +82,339 @@ namespace RobotPortal
             compiler.CompileSimpleReport();
 
         }
+
+        [Test]
+        public void TestCompileReportAddProfile()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
+
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileReportAddProfile();
+
+        }
+
+        [Test]
+        public void TestCompileReportMakeChanges()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
+
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileReportMakeChanges();
+
+        }
+
+        [Test]
+        public void TesteFilterReportObs()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByObs();
+        }
+
+        [Test]
+        public void TesteFilterReportStatus()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByStatus();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataStart()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataStart();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataEnd()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataEnd();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataVoidResult()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataVoidResult();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByOrder()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByOrder();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByReportName()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByReportName();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByDate()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByDate();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByAnalist()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByAnalist();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByObs()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByObs();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByStatus()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByStatus();
+        }
+
+        [Test]
+        public void TesteVisualizeReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.ViewReport();
+        }
+
+        [Test]
+        public void TesteEditObsReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.EditInfoReport();
+        }
+
+        [Test]
+        public void TesteAddProfileReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+        
+            security.Login();
+            portal.AcessMenuReport();
+            reports.AddProfileReport();
+        }
+
+        [Test]
+        public void TesteViewSuites()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.ViewSuiteReport();
+        }
+
+        [Test]
+        public void TesteRemoveProfile()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.RemoveProfileReport();
+        }
+
+        [Test]
+        public void TesteInativeProfile()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.InativeProfileReport();
+        }
+
+        [Test]
+        public void TesteDeleteReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.DeletePostReport();
+        }
+
+        [Test]
+        public void TesteDeletePostReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.DeleteReport();
+        }
+
+        [Test]
+        public void TesteUnpubPostReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.UnpubPostReport();
+        }
+
+        [Test]
+        public void TesteFilterClientNameReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.MenuReportFromHome();
+            reports.FilterByClientName();
+        }
+
+        [Test]
+        public void TesteFilterByClientReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByClientName();
+        }
+
+        [Test]
+        public void TesteFilterByProfileTypeReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.MenuReportFromHome();
+            reports.FilterByProfile();
+        }
+
+        [Test]
+        public void TestePermissionReadUsers()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseMarisaClient();
+            permission.ReadUser();
+            
+        }
+
+        
+
+
+
+
     }
 }
