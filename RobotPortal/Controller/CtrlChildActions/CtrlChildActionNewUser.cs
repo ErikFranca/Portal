@@ -52,6 +52,14 @@ namespace RobotPortal
         public IWebElement registerPermission;
         public IWebElement operador;
         public IWebElement gerente;
+        public IWebElement ClientSelectPicker;
+        public IWebElement EquipSelectPicker;
+        public IWebElement LoginTypeSelectPicker;
+        public IWebElement FieldObs;
+        public IWebElement BoxPermissionDefaut;
+        public IWebElement ButtonNext;
+        public IWebElement ButtonRegister;
+
         public CtrlChildActionNewUser(IWebDriver driver) : base(driver)
         {
             driverChildAction = driver;
@@ -63,6 +71,23 @@ namespace RobotPortal
             FieldPassword = FindById("password");
             ButtonEnter = FindByCss("#login_form > center > button");
 
+        }
+
+        public void SwitchFrameInitialize()
+        {
+            SwitchFrame("iframe_opt");
+        }
+
+        public void TesteInitialize()
+        {
+            Thread.Sleep(3000);
+            ClientSelectPicker = FindById("cst_id");
+            EquipSelectPicker = FindById("area");
+            LoginTypeSelectPicker = FindById("list-type_new");
+            FieldObs = FindByName("perfil");
+            ButtonNext = FindById("btn_prf");
+            BoxPermissionDefaut = FindById("chk_default_pms");
+            ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
         }
         public void UserTab()
         {
@@ -668,7 +693,70 @@ namespace RobotPortal
             Click(nextforPermission);
             SelectPermission();
             Click(defaultPermission);
-            NamePermission();
+            //NamePermission();
+
+        }
+
+        public void TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica()
+        {
+
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+            SwitchFrame("iframe_opt");
+            AdminAccessClient();
+            Click(AllClients);
+            AdminAccessTeam();
+            Click(AllTeams);
+            UserTab();
+            Click(Users);
+            Click(Register);
+            SwitchFrame("iframe_opt");
+            Data();
+            SendKeys(newLogin, "teste.15");
+            SendKeys(newEmail, "teste@15.com");
+            Click(next);
+            Type();
+            Click(setNew);
+            SelectCliente();
+            Click(selectClient);
+            ClientName();
+            Click(all);
+            Click(selectTeam);
+            ProfileTeam();
+            Click(monitoring);
+            SelectCliente();
+            Click(selectProfileText);
+            SendKeys(selectProfileText, "teste perfil especifico" + Keys.Tab);
+            SelectCliente();
+            Click(nextforPermission);
+
+        }
+
+        public void TestNewUser()
+        {
+            SwitchFrameInitialize();
+            Data();
+
+            SendKeys(newLogin, "TestePermissao1");
+            SendKeys(newEmail, "teste@teste.com.br");
+            Click(next);
+
+            Type();
+            Click(setNew);
+
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Marisa");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Administrador");
+            Click(ButtonNext);
+            //SendKeys(FieldObs, "TestePermissão");
+
+            Click(BoxPermissionDefaut); 
+            Click(ButtonRegister);
+            AcceptAlert();
 
         }
     }

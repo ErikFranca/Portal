@@ -68,6 +68,7 @@ namespace RobotPortal
         }
         public void SendKeys(IWebElement element, string content)
         {
+            Thread.Sleep(1000);
             element.SendKeys(content);
         }
 
@@ -116,7 +117,9 @@ namespace RobotPortal
 
         public void Clear(IWebElement elemento)
         {
+            Thread.Sleep(1000);
             elemento.Clear();
+            
         }
 
         public void Wait(By elemento)

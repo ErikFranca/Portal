@@ -406,12 +406,77 @@ namespace RobotPortal
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
             security.Login();
-            portal.ChooseMarisaClient();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
             permission.ReadUser();
             
         }
 
-        
+        [Test]
+        public void TestePermissionNewUser()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionNewUser newuser = new CtrlChildActionNewUser(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuNewUsers();
+            newuser.TestNewUser();
+
+
+        }
+
+        [Test]
+        public void TestePermissionDeleteUser()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionDeleteUser();
+
+
+        }
+
+        [Test]
+        public void TestePermissionEditInfoUser()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionEditInfoUser();
+
+
+        }
+
+        [Test]
+        public void TestePermissionViewProfileUser()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionViewProfileUser();
+
+        }
+
+
 
 
 

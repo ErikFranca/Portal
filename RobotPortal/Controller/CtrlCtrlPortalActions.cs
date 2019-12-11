@@ -24,6 +24,10 @@ namespace RobotPortal
         public IWebElement ButtonAllClients;
         public IWebElement ButtonAllTeams;
         public IWebElement ButtonMarisaClient;
+        public IWebElement UserMenu;
+        public IWebElement UserConsultMenu;
+        public IWebElement ArrowCloseMenu;
+        public IWebElement UserRegisterMenu;
 
         public CtrlCtrlPortalActions(IWebDriver driver) : base(driver)
         {
@@ -33,10 +37,15 @@ namespace RobotPortal
         public void Initialize()
         {
             Thread.Sleep(3000);
+
+            ArrowCloseMenu = FindById("close-nav");
             ArrowMenu = FindByCss("#open-nav > a");
             ReportMenu = FindByCss("#navBar-lateral > li:nth-child(3) > a");
             ReportConsultMenu = FindByCss("#submenu-report > li:nth-child(1) > a");
             ReportCompileMenu = FindByCss("#submenu-report > li:nth-child(2) > a");
+            UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
+            UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
+            UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
         }
 
         public void SelectClientInitialize()
@@ -74,8 +83,10 @@ namespace RobotPortal
         {
             Initialize();
 
-
-            Click(ArrowMenu);
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
             Click(ReportMenu);
             Click(ReportCompileMenu);
         }
@@ -99,6 +110,30 @@ namespace RobotPortal
             SelectTeamInitialize();
             Click(ButtonAllTeams);
 
+        }
+
+        public void AcessMenuConsultUsers()
+        {
+            Initialize();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(UserMenu);
+            Click(UserConsultMenu);
+        }
+
+        public void AcessMenuNewUsers()
+        {
+            Initialize();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(UserMenu);
+            Click(UserRegisterMenu);
         }
 
     }
