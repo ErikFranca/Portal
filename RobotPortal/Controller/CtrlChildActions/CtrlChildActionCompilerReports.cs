@@ -1,5 +1,8 @@
 ﻿using OpenQA.Selenium;
+using NUnit.Framework;
 using System.Threading;
+using System.Collections.Generic;
+using System;
 using OpenQA.Selenium.Support.UI;
 
 namespace RobotPortal
@@ -18,7 +21,7 @@ namespace RobotPortal
         public IWebElement ButtonGenerate;
         public IWebElement FieldManager;
         public IWebElement DoneMessage;
-        public IWebElement OptManager;
+        public IWebElement OptPicker;
         public IWebElement DropFilter;
 
 
@@ -46,8 +49,9 @@ namespace RobotPortal
         public void FilterTypeInitialize()
         {
             Thread.Sleep(5000);
-            OptManager = FindByCss("#user > div > form > div:nth-child(5) > div:nth-child(3) > div > div.dropdown-menu.open > div.inner.open > ul > li:nth-child(2) > a");
+            OptPicker = FindByCss("#list-type");
             DropFilter = FindByCss("#user > div > form > div:nth-child(5) > div:nth-child(3) > div > div.dropdown-backdrop");
+            
         }
 
         public void MessageInitialize()
@@ -59,7 +63,7 @@ namespace RobotPortal
 
         public void CompileSimpleReport()
         {
-            //SwitchFrame("iframe_opt");
+            SwitchFrame("iframe_opt");
             Initialize();
 
             AssertAreEqual("Compilação de Relatórios", TittleCompiler);
@@ -67,11 +71,45 @@ namespace RobotPortal
             SendKeys(FieldFilterID, "47" + Keys.Enter);
             Click(FilterProfileType);
             FilterTypeInitialize();
-            Click(OptManager);
-            Click(DropFilter);
+            SelectByText(OptPicker, "Gerente");
             Click(ButtonGenerate);
             MessageInitialize();
             
         }
+
+        public void CompileReportAddProfile()
+        {
+            SwitchFrame("iframe_opt");
+            Initialize();
+
+            AssertAreEqual("Compilação de Relatórios", TittleCompiler);
+            Click(FilterID);
+            SendKeys(FieldFilterID, "47" + Keys.Enter);
+            Click(FilterProfileType);
+            FilterTypeInitialize();
+            SelectByText(OptPicker, "Gerente");
+            SelectByText(OptPicker, "Analista");
+            Click(ButtonGenerate);
+            MessageInitialize();
+
+        }
+
+        public void CompileReportMakeChanges()
+        {
+            SwitchFrame("iframe_opt");
+            Initialize();
+
+            AssertAreEqual("Compilação de Relatórios", TittleCompiler);
+            Click(FilterID);
+            SendKeys(FieldFilterID, "47" + Keys.Enter);
+            Click(FilterProfileType);
+            FilterTypeInitialize();
+            SelectByText(OptPicker, "Gerente");
+            SendKeys(FieldObs, "Teste");
+            Click(ButtonGenerate);
+            MessageInitialize();
+
+        }
+
     }
 }

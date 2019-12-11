@@ -48,8 +48,8 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste");
-            SendKeys(FieldPassword, "bpPC9Qf9xSH2Z");
+            SendKeys(FieldLogin, "testeadmin");
+            SendKeys(FieldPassword, "Starline123@");
             Click(ButtonEnter);
         }
         public void LoginPortalUsuarioInativo()

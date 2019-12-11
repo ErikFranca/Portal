@@ -2,29 +2,51 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using OpenQA.Selenium.Interactions;
-using System.IO;
-using System.Net;
-using System.Text;
+using System.Threading;
 
 namespace RobotPortal
 {
     public class CtrlDriverActions
     {
         public IWebDriver driverAction;
-        public IWebElement checkbox;
+
         public CtrlDriverActions(IWebDriver driver)
         {
             this.driverAction = driver;
         }
 
+        public void AssertFalseResult(string element)
+        {
+            Assert.IsFalse(IsElementPresent(By.CssSelector(element)));
+        }
+
         public IWebElement FindById(string id)
         {
             return driverAction.FindElement(By.Id(id));
+
+        }
+        public IWebElement FindByClassName(string element)
+        {
+            return driverAction.FindElement(By.ClassName(element));
+        }
+
+        public IWebElement FindByLinkText(string element)
+        {
+            return driverAction.FindElement(By.LinkText(element));
+        }
+
+        public void SwitchTab()
+        {
+            Thread.Sleep(1000);
+            var browserTabs = driverAction.WindowHandles;
+            driverAction.SwitchTo().Window(browserTabs[1]);
+        }
+
+        public void AcceptAlert()
+        {
+            Thread.Sleep(1000);
+            driverAction.SwitchTo().Alert().Accept();
         }
         public IWebElement FindByCss(string Css)
         {
@@ -41,29 +63,50 @@ namespace RobotPortal
 
         public void SwitchFrame(string Frame)
         {
+            Thread.Sleep(1000);
             driverAction.SwitchTo().Frame(Frame);
         }
-
         public void SendKeys(IWebElement element, string content)
         {
+            Thread.Sleep(1000);
             element.SendKeys(content);
         }
-        
-        public void WaitLoad(By by)
-        {
-            if (!IsElementDisplayed(by))
-            {
-                Load(by);
-            }
-        }
 
-        public void WaitLoadC()
+        
+
+        public void WaitForPageToLoad(IWebDriver driver)
         {
-            if (IsElementDisplayed(By.Id("loader")))
+            TimeSpan timeout = new TimeSpan(0, 0, 30);
+            WebDriverWait wait = new WebDriverWait(driver, timeout);
+
+            IJavaScriptExecutor javascript = driver as IJavaScriptExecutor;
+            if (javascript == null)
+                throw new ArgumentException("driver", "Driver must support javascript execution");
+
+            wait.Until((d) =>
             {
-                Load(By.Id("loader"));
-            }
-        }
+                try
+                {
+                    string readyState = javascript.ExecuteScript(
+                    "if (document.readyState) return document.readyState;").ToString();
+                    return readyState.ToLower() == "complete";
+                }
+                catch (InvalidOperationException e)
+                {
+                    //Window is no longer available
+                    return e.Message.ToLower().Contains("unable to get browser");
+                }
+                catch (WebDriverException e)
+                {
+                    //Browser is no longer available
+                    return e.Message.ToLower().Contains("unable to connect");
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            });
+        }        
 
         public void JavaScriptClick(IWebElement element)
         {
@@ -72,9 +115,11 @@ namespace RobotPortal
         }
 
 
-        public void Clear(By elemento)
+        public void Clear(IWebElement elemento)
         {
-            driverAction.FindElement(elemento).Clear();
+            Thread.Sleep(1000);
+            elemento.Clear();
+            
         }
 
         public void Wait(By elemento)
@@ -84,46 +129,7 @@ namespace RobotPortal
             Thread.Sleep(3000);
         }
 
-        public void NamePermission()
-        {
-            IList<IWebElement> listPermission = driverAction.FindElements(By.XPath("//*[@id='formPermission']/div[1]/div/table/tbody/tr/td[2]"));
-            int count = listPermission.Count();
-            List<string> list = new List<string>();
-            IList<IWebElement> oRadioButton = driverAction.FindElements(By.XPath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr/td[1]/center/div/input"));
-            int count1 = oRadioButton.Count();
 
-            for (int i = 1; i <= count; i++)
-            {
-                var permission = driverAction.FindElement(By.CssSelector("tbody > tr:nth-child(" + (i) + ") > td:nth-child(2)")).Text;
-                while (i <= count1)
-                {
-                    bool bValue = false;
-                    checkbox = FindByXpath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr[" + (i) + "]/td[1]/center/div/input");
-
-                    //checkbox = driverAction.FindElements(By.XPath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr["+(j)+"]/td[1]/center/div/input"));
-                    bValue = checkbox.Selected;
-                    if (bValue == true && permission.Contains("Ler relatórios de teste"))
-                    {
-                        list.Add(permission);
-                        break;
-                    }
-                    if (bValue == false && permission.Contains("Ler relatórios de teste"))
-                    {
-                        throw new ArgumentNullException();
-                    }
-                    else
-                    {
-                        break;
-                    }
-
-                }
-                                     
-                
-
-            }
-            
-        }
-        
         public void Click(IWebElement element)
         {
             Thread.Sleep(1000);
@@ -145,19 +151,21 @@ namespace RobotPortal
 
         public void SelectByText(IWebElement element, string conteudo)
         {
+            Thread.Sleep(1000);
             new SelectElement(element).SelectByText(conteudo);
         }
 
 
-        public string GetElementText(By elemento)
+        public string GetElementText(IWebElement element)
         {
-            return driverAction.FindElement(elemento).Text;
+            return element.ToString();
         }
 
-        public void Load(By elemento)
+
+        public void Load(By element)
         {
             WebDriverWait Load = new WebDriverWait(driverAction, TimeSpan.FromSeconds(60));
-            Load.Until(ExpectedConditions.InvisibilityOfElementLocated(elemento));
+            Load.Until(ExpectedConditions.InvisibilityOfElementLocated(element));
         }
 
 
@@ -174,12 +182,13 @@ namespace RobotPortal
             }
         }
 
-        public bool IsElementDisplayed(By by)
+        public bool IsElementDisplayed(IWebElement element)
         {
-            return driverAction.FindElement(by).Displayed;
+            Thread.Sleep(1000);
+            return element.Displayed;
         }
 
-   
+
 
         public void AssertTitleAreEqual(string validacao)
         {
@@ -188,8 +197,8 @@ namespace RobotPortal
 
         public void AssertAreEqual(string validate, IWebElement element)
         {
+            Thread.Sleep(1000);
             Assert.AreEqual(validate, element.Text.ToString());
-
         }
 
         public void AssertIsTrue(By by)

@@ -59,179 +59,421 @@ namespace RobotPortal
         }
 
         [Test]
-        public void LoginPortalUsuarioInativo()
+        public void TestFilterReportName()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByReportName();
+        }
+
+        [Test]
+        public void TestCompileReport()
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginPortalUsuarioInativo();
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileSimpleReport();
+
         }
+
         [Test]
-        public void LoginPortalSenhaCorreta()
+        public void TestCompileReportAddProfile()
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginPortalSenhaCorreta();
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileReportAddProfile();
+
         }
+
         [Test]
-        public void LoginPortalSenhaIncorreta()
+        public void TestCompileReportMakeChanges()
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginPortalSenhaIncorreta();
+            security.Login();
+            portal.AcessMenuCompile();
+            compiler.CompileReportMakeChanges();
+
         }
+
         [Test]
-        public void NovoLoginPortalTestSenha()
+        public void TesteFilterReportObs()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByObs();
+        }
+
+        [Test]
+        public void TesteFilterReportStatus()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByStatus();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataStart()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataStart();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataEnd()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataEnd();
+
+        }
+
+        [Test]
+        public void TesteFilterReportDataVoidResult()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByDataVoidResult();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByOrder()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByOrder();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByReportName()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByReportName();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByDate()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByDate();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByAnalist()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByAnalist();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByObs()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByObs();
+
+        }
+
+        [Test]
+        public void TesteFilterReportOrderByStatus()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterOrderByStatus();
+        }
+
+        [Test]
+        public void TesteVisualizeReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.ViewReport();
+        }
+
+        [Test]
+        public void TesteEditObsReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.EditInfoReport();
+        }
+
+        [Test]
+        public void TesteAddProfileReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+        
+            security.Login();
+            portal.AcessMenuReport();
+            reports.AddProfileReport();
+        }
+
+        [Test]
+        public void TesteViewSuites()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.ViewSuiteReport();
+        }
+
+        [Test]
+        public void TesteRemoveProfile()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.RemoveProfileReport();
+        }
+
+        [Test]
+        public void TesteInativeProfile()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.InativeProfileReport();
+        }
+
+        [Test]
+        public void TesteDeleteReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.DeletePostReport();
+        }
+
+        [Test]
+        public void TesteDeletePostReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.DeleteReport();
+        }
+
+        [Test]
+        public void TesteUnpubPostReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.UnpubPostReport();
+        }
+
+        [Test]
+        public void TesteFilterClientNameReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.MenuReportFromHome();
+            reports.FilterByClientName();
+        }
+
+        [Test]
+        public void TesteFilterByClientReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.AcessMenuReport();
+            reports.FilterByClientName();
+        }
+
+        [Test]
+        public void TesteFilterByProfileTypeReport()
+        {
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.MenuReportFromHome();
+            reports.FilterByProfile();
+        }
+
+        [Test]
+        public void TestePermissionReadUsers()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.ReadUser();
+            
+        }
+
+        [Test]
+        public void TestePermissionNewUser()
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionNewUser newuser = new CtrlChildActionNewUser(driver);
 
-            security.NovoLoginPortalTestSenha();
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuNewUsers();
+            newuser.TestNewUser();
+
+
         }
+
         [Test]
-        public void TesteQuantidadeLoginsIncorretosExcedida()
+        public void TestePermissionDeleteUser()
         {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.TesteQuantidadeLoginsIncorretosExcedida();
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionDeleteUser();
+
+
         }
-        [Test]
-        public void TesteInclusaoUsuarioCopiandoOutroUsuarioExistente()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
 
-            newUser.TesteInclusaoUsuarioCopiandoOutroUsuarioExistente();
+        [Test]
+        public void TestePermissionEditInfoUser()
+        {
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionEditInfoUser();
+
+
         }
-        [Test]
-        public void TesteInclusaoUsuarioAtribuindoPerfilExistente()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
 
-            newUser.TesteInclusaoUsuarioAtribuindoPerfilExistente();
-        }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico()
+        public void TestePermissionViewProfileUser()
         {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuConsultUsers();
+            permission.PermissionViewProfileUser();
 
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifico()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilEspecifico();
-        }
-        [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao()
-        {
-            CtrlChildActionNewUser newUser = new CtrlChildActionNewUser(driver);
-
-            newUser.TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao();
-        }
-        [Test]
-        public void TesteTrocaSenha()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.TesteTrocaSenha();
-        }
-        [Test]
-        public void TesteTrocaEmail()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.TesteTrocaEmail();
-        }
-        [Test]
-        public void TesteAtualizacaoInformacoesUsuarioExistente()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.TesteAtualizacaoInformacoesUsuarioExistente();
-        }
-        [Test]
-        public void ValidarVisualizacaoPerfilUsuarios()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.ValidarVisualizacaoPerfilUsuarios();
-        }
-        [Test]
-        public void ValidarInativacaoPerfilConsultaUsuarios()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.ValidarInativacaoPerfilConsultaUsuarios();
-        }
-        [Test]
-        public void TesteAdicaoPermissaoPerfilConsultaUsuario()
-        {
-            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
-
-            User.TesteAdicaoPermissaoPerfilConsultaUsuario();
         }
         [Test]
         public void TesteExclusaoPermissaoPerfilConsultaUsuario()
