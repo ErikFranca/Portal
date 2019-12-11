@@ -38,6 +38,11 @@ namespace RobotPortal
         public IWebElement inativePermission;
         public IWebElement Profile;
         public IWebElement RegisterProfile;
+        public IWebElement addProfile;
+        public IWebElement remUser;
+        public IWebElement remProfile;
+        public IWebElement selectProfile;
+        public IWebElement selectAnalista;
         public CtrlChildActionUsers(IWebDriver driver) : base(driver)
         {
             driverChildAction = driver;
@@ -87,20 +92,29 @@ namespace RobotPortal
             Thread.Sleep(3000);
             editUser = FindById("editIcon_160");
             seeUser = FindByCss("#tr_160 a:nth-child(3) > .md");
-
+            remUser = FindByCss("#tr_160 a:nth-child(4) > .md");
         }
         public void InitializePermissionScreen()
         {
             Thread.Sleep(3000);
-            addPermission = FindByCss("tr:nth-child(1) .btn-sm");
-            remPermission = FindByCss("tr:nth-child(1) .btn:nth-child(2) > .md");
-            inativePermission = FindByCss("tr:nth-child(4) .btn:nth-child(1) > .md");
+            addPermission = FindByCss("#tb_pms_others_167 tr:nth-child(1) .btn");
+            remPermission = FindByCss("#tb_pms_167 tr:nth-child(1) .btn:nth-child(2) > .md");
+            inativePermission = FindByCss("#tb_pms_167 tr:nth-child(2) .btn:nth-child(1) > .md");
         }
         public void SeeUserScreen()
         {
             Thread.Sleep(3000);
             userStatus = FindById("statusPrf_167");
             seePermission = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(3)");
+            addProfile = FindById("btn_show_prf_160");
+            remProfile = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(4)");
+            selectProfile = FindByCss("#prf_row_160 > div.col-9 > div > button");
+            
+        }
+        public void InitializeTypeProfile()
+        {
+            Thread.Sleep(3000);
+            selectAnalista = FindByCss("body > div.bs-container.dropdown.bootstrap-select.show > div > div.inner.show > ul > li:nth-child(5) > a");
         }
         public void InicializeEditScreen()
         {
@@ -232,6 +246,97 @@ namespace RobotPortal
             Click(seePermission);
             InitializePermissionScreen();
             Click(addPermission);
+
+        }
+        public void TesteExclusaoPermissaoPerfilConsultaUsuario()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+            SwitchFrame("iframe_opt");
+            AdminAccessClient();
+            Click(AllClients);
+            AdminAccessTeam();
+            Click(AllTeams);
+            InitializeUserTab();
+            Click(Users);
+            Click(Consult);
+            SwitchFrame("iframe_opt");
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+            SeeUserScreen();
+            Click(seePermission);
+            InitializePermissionScreen();
+            Click(remPermission);
+
+        }
+        public void TesteInclusaoPerfilViaConsultaUsuario()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+            SwitchFrame("iframe_opt");
+            AdminAccessClient();
+            Click(AllClients);
+            AdminAccessTeam();
+            Click(AllTeams);
+            InitializeUserTab();
+            Click(Users);
+            Click(Consult);
+            SwitchFrame("iframe_opt");
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+            SeeUserScreen();
+            Click(addProfile);
+            Click(selectProfile);
+            InitializeTypeProfile();
+            Click(selectAnalista);
+
+        }
+        public void TesteExclusaoPerfilViaConsultaUsuario()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+            SwitchFrame("iframe_opt");
+            AdminAccessClient();
+            Click(AllClients);
+            AdminAccessTeam();
+            Click(AllTeams);
+            InitializeUserTab();
+            Click(Users);
+            Click(Consult);
+            SwitchFrame("iframe_opt");
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+            SeeUserScreen();
+            Click(remProfile);
+
+        }
+        public void TesteExclusaoUsuario()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+            SwitchFrame("iframe_opt");
+            AdminAccessClient();
+            Click(AllClients);
+            AdminAccessTeam();
+            Click(AllTeams);
+            InitializeUserTab();
+            Click(Users);
+            Click(Consult);
+            SwitchFrame("iframe_opt");
+            InitializeEditAndSeeUser();
+            Click(remUser);
 
         }
     }

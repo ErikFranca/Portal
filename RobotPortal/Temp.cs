@@ -233,5 +233,33 @@ namespace RobotPortal
 
             User.TesteAdicaoPermissaoPerfilConsultaUsuario();
         }
+        [Test]
+        public void TesteExclusaoPermissaoPerfilConsultaUsuario()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteExclusaoPermissaoPerfilConsultaUsuario();
+        }
+        [Test]
+        public void TesteInclusaoPerfilViaConsultaUsuario()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteInclusaoPerfilViaConsultaUsuario();
+        }
+        [Test]
+        public void TesteExclusaoPerfilViaConsultaUsuario()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteExclusaoPerfilViaConsultaUsuario();
+        }
+        [Test]
+        public void TesteExclusaoUsuario()
+        {
+            CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
+
+            User.TesteExclusaoUsuario();
+        }
     }
 }
