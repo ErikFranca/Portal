@@ -536,6 +536,48 @@ namespace RobotPortal
 
         }
 
+        [Test]
+        public void TestePermissionInactiveProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            permission.InactiveProfilePermission();
+        }
+
+        [Test]
+        public void TestePermissionViewProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            permission.PermissionViewProfile();
+        }
+
+        [Test]
+        public void TestePermissionRegisterProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            permission.CreateProfile();
+        }
+
 
 
 

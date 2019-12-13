@@ -50,7 +50,7 @@ namespace RobotPortal
             UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
             UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
             UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
-            ProfileMenu = FindByCss(".collapsed");
+            ProfileMenu = FindByCss("#navBar-lateral > li:nth-child(2) > a");
             ProfileConsultMenu = FindByCss("#submenu-profile > li:nth-child(1) > a:nth-child(1)");
             ProfileRegisterMenu = FindByCss("#submenu-profile > li:nth-child(2) > a:nth-child(1)");
         }
@@ -151,8 +151,20 @@ namespace RobotPortal
             {
                 Click(ArrowMenu);
             }
-            Click(UserMenu);
-            Click(UserRegisterMenu);
+            Click(ProfileMenu);
+            Click(ProfileConsultMenu);
+        }
+
+        public void AcessMenuProfileRegister()
+        {
+            Initialize();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(ProfileMenu);
+            Click(ProfileRegisterMenu);
         }
 
     }
