@@ -513,7 +513,7 @@ namespace RobotPortal
             Click(nextforPermission);
             SelectPermission();
             Click(defaultPermission);
-            //NamePermission();
+            NamePermission();
 
         }
 
