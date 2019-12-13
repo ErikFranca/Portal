@@ -182,40 +182,8 @@ namespace RobotPortal
             Thread.Sleep(3000);
             profileMarisa = FindByCss(".optgroup-1:nth-child(5) .");
         }
-        public void InitializeRegister()
-        {
-            UserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Register);
-        }
-        public void InitializeRegisterAdm()
-        {
-            UserTab();
-            Click(Users);
-            Click(Register);
-        }
-        public void InitializeLoginAdm()
-        {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-        }
         public void TesteInclusaoUsuarioCopiandoOutroUsuarioExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeRegister();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.5");
@@ -232,12 +200,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioAtribuindoPerfilExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeRegister();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.5");
@@ -255,8 +217,6 @@ namespace RobotPortal
         public void TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico()
         {
             
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.6");
@@ -281,8 +241,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.7");
@@ -308,12 +266,6 @@ namespace RobotPortal
         public void TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo()
         {
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "user.kroton");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeRegister();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.8");
@@ -327,8 +279,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.9");
@@ -353,8 +303,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.10");
@@ -379,8 +327,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.11");
@@ -410,8 +356,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.12");
@@ -441,8 +385,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.13");
@@ -472,8 +414,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.13");
@@ -503,8 +443,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.15");
@@ -528,8 +466,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifico()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.15");
@@ -553,8 +489,6 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao()
         {
-            InitializeLoginAdm();
-            InitializeRegisterAdm();
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.15");
@@ -585,20 +519,6 @@ namespace RobotPortal
 
         public void TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica()
         {
-
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
             SwitchFrame("iframe_opt");
             Data();
             SendKeys(newLogin, "teste.15");

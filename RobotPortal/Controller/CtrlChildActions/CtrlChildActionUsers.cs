@@ -94,6 +94,12 @@ namespace RobotPortal
             seeUser = FindByCss("#tr_160 a:nth-child(3) > .md");
             remUser = FindByCss("#tr_160 a:nth-child(4) > .md");
         }
+        public void InitializeEditAndSeeUserTst2()
+        {
+            Thread.Sleep(3000);
+            editUser = FindById("editIcon_171");
+            seeUser = FindByCss("#tr_171 a:nth-child(3) > .md");
+        }
         public void InitializePermissionScreen()
         {
             Thread.Sleep(3000);
@@ -110,6 +116,12 @@ namespace RobotPortal
             remProfile = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(4)");
             selectProfile = FindByCss("#prf_row_160 > div.col-9 > div > button");
             
+        }
+        public void SeeUserScreenTst2()
+        {
+            Thread.Sleep(3000);
+            userStatus = FindById("status");
+
         }
         public void InitializeTypeProfile()
         {
@@ -133,11 +145,6 @@ namespace RobotPortal
         }
         public void TesteTrocaEmail()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
             AccessUserTags();
             Click(userAction);
             InitializeUserMenu();
@@ -153,11 +160,6 @@ namespace RobotPortal
 
         public void TesteTrocaSenha()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
             AccessUserTags();
             Click(userAction);
             InitializeUserMenu();
@@ -172,17 +174,8 @@ namespace RobotPortal
         }
         public void TesteAtualizacaoInformacoesUsuarioExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+            InitializeEditAndSeeUserTst2();
             Click(editUser);
             InicializeEditScreen();
             Click(editDate);
@@ -192,53 +185,25 @@ namespace RobotPortal
         }
         public void ValidarVisualizacaoPerfilUsuarios()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+            InitializeEditAndSeeUserTst2();
             Click(seeUser);
             
         }
         public void ValidarInativacaoPerfilConsultaUsuarios()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+            InitializeEditAndSeeUserTst2();
             Click(seeUser);
-            SeeUserScreen();
+            SeeUserScreenTst2();
             AssertAreEqual("Ativo", userStatus);
 
         }
         public void TesteAdicaoPermissaoPerfilConsultaUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUser();
             Click(seeUser);
@@ -250,19 +215,7 @@ namespace RobotPortal
         }
         public void TesteExclusaoPermissaoPerfilConsultaUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUser();
             Click(seeUser);
@@ -274,19 +227,7 @@ namespace RobotPortal
         }
         public void TesteInclusaoPerfilViaConsultaUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUser();
             Click(seeUser);
@@ -299,19 +240,7 @@ namespace RobotPortal
         }
         public void TesteExclusaoPerfilViaConsultaUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUser();
             Click(seeUser);
@@ -321,19 +250,7 @@ namespace RobotPortal
         }
         public void TesteExclusaoUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
+            
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUser();
             Click(remUser);
