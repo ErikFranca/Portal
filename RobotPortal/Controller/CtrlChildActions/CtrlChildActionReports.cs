@@ -83,6 +83,7 @@ namespace RobotPortal
 
         public void IconInitialize()
         {
+            Thread.Sleep(3000);
             IconAcess = FindByName("eye");
             IconEdit = FindByName("create");
             IconConfirmEdit = FindByName("bookmark");
@@ -98,6 +99,7 @@ namespace RobotPortal
 
         public void ViewProfileInitialize()
         {
+            Thread.Sleep(3000);
             IconShowAddProfile = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/div/div[2]/button[1]");
             IconAddProfile = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/div/div[2]/button[2]");
             FilterTypeProfile = FindByClassName("selectpicker");
@@ -113,6 +115,7 @@ namespace RobotPortal
 
         public void SwitchFrameInitialize()
         {
+            Thread.Sleep(3000);
             SwitchFrame("iframe_opt");
         }
 

@@ -28,6 +28,10 @@ namespace RobotPortal
         public IWebElement UserConsultMenu;
         public IWebElement ArrowCloseMenu;
         public IWebElement UserRegisterMenu;
+        public IWebElement ProfileMenu;
+        public IWebElement ProfileConsultMenu;
+        public IWebElement ProfileRegisterMenu;
+
 
         public CtrlCtrlPortalActions(IWebDriver driver) : base(driver)
         {
@@ -46,6 +50,9 @@ namespace RobotPortal
             UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
             UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
             UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
+            ProfileMenu = FindByCss(".collapsed");
+            ProfileConsultMenu = FindByCss("#submenu-profile > li:nth-child(1) > a:nth-child(1)");
+            ProfileRegisterMenu = FindByCss("#submenu-profile > li:nth-child(2) > a:nth-child(1)");
         }
 
         public void SelectClientInitialize()
@@ -125,6 +132,18 @@ namespace RobotPortal
         }
 
         public void AcessMenuNewUsers()
+        {
+            Initialize();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(UserMenu);
+            Click(UserRegisterMenu);
+        }
+
+        public void AcessMenuProfileConsult()
         {
             Initialize();
 
