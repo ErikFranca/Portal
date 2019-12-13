@@ -17,13 +17,7 @@ namespace RobotPortal
         {
             driverChildAction = driver;
         }
-        public void Initialize()
-        {
-            Thread.Sleep(3000);
-            FieldLogin = FindById("email");
-            FieldPassword = FindById("password");
-            ButtonEnter = FindByCss("#login_form > center > button");
 
-        }
+        
     }
 }

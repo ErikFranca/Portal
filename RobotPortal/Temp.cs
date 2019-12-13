@@ -801,6 +801,19 @@ namespace RobotPortal
             portal.AcessMenuNewUsers();
             newUsers.TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica();
         }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico()
+        {
+            CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            newUsers.TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica();
+        }
+        
     }
 }
