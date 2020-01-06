@@ -48,10 +48,40 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "testeadmin");
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+        }
+
+        public void PermissionUserLogin()
+        {
+            Initialize();
+
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "permissionprofile");
             SendKeys(FieldPassword, "Starline123@");
             Click(ButtonEnter);
         }
+        public void PermissionProfileLogin()
+        {
+            Initialize();
+
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "testprofile");
+            SendKeys(FieldPassword, "Starline123@");
+            Click(ButtonEnter);
+        }
+
+        public void PermissionReportLogin()
+        {
+            Initialize();
+
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "testreport");
+            SendKeys(FieldPassword, "Starline123@");
+            Click(ButtonEnter);
+        }
+
         public void LoginPortalUsuarioInativo()
         {
             Initialize();

@@ -55,6 +55,39 @@ namespace RobotPortal
             ProfileRegisterMenu = FindByCss("#submenu-profile > li:nth-child(2) > a:nth-child(1)");
         }
 
+        public void InitializePermissionReport()
+        {
+            Thread.Sleep(3000);
+
+            ArrowCloseMenu = FindById("close-nav");
+            ArrowMenu = FindByCss("#open-nav > a");
+            ReportMenu = FindByXpath("//*[@id='navBar-lateral']/li[2]/a");
+            ReportConsultMenu = FindByXpath("//*[@id='submenu-report']/li[1]/a");
+            ReportCompileMenu = FindByXpath("//*[@id='submenu-report']/li[2]/a");
+        }
+
+        public void InitializePermissionUser()
+        {
+            Thread.Sleep(3000);
+
+            ArrowCloseMenu = FindById("close-nav");
+            ArrowMenu = FindByCss("#open-nav > a");
+            UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
+            UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
+            UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
+        }
+
+        public void InitializePermissionProfile()
+        {
+            Thread.Sleep(3000);
+
+            ArrowCloseMenu = FindById("close-nav");
+            ArrowMenu = FindByCss("#open-nav > a"); 
+            ProfileMenu = FindByXpath("//*[@id='navBar-lateral']/li/a");
+            ProfileConsultMenu = FindByXpath("//*[@id='submenu-profile']/li[1]/a");
+            ProfileRegisterMenu = FindByXpath("//*[@id='submenu-profile']/li[2]/a");
+        }
+
         public void SelectClientInitialize()
         {
             Thread.Sleep(3000);
@@ -130,6 +163,29 @@ namespace RobotPortal
             Click(UserMenu);
             Click(UserConsultMenu);
         }
+        public void PermissionAcessMenuConsultUsers()
+        {
+            InitializePermissionUser();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(UserMenu);
+            Click(UserConsultMenu);
+        }
+
+        public void PermissionAcessMenuRegisterUsers()
+        {
+            InitializePermissionUser();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(UserMenu);
+            Click(UserRegisterMenu);
+        }
 
         public void AcessMenuNewUsers()
         {
@@ -165,6 +221,54 @@ namespace RobotPortal
             }
             Click(ProfileMenu);
             Click(ProfileRegisterMenu);
+        }
+
+        public void PermissionAcessMenuProfileConsult()
+        {
+            InitializePermissionProfile();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(ProfileMenu);
+            Click(ProfileConsultMenu);
+        }
+
+        public void PermissionAcessMenuProfileRegister()
+        {
+            InitializePermissionProfile();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(ProfileMenu);
+            Click(ProfileRegisterMenu);
+        }
+
+        public void PermissionAcessMenuConsultReport()
+        {
+            InitializePermissionReport();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(ReportMenu);
+            Click(ReportConsultMenu);
+        }
+
+        public void PermissionAcessMenuCompileReport()
+        {
+            InitializePermissionReport();
+
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
+            Click(ReportMenu);
+            Click(ReportCompileMenu);
         }
 
     }

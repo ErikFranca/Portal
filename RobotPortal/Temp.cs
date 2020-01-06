@@ -61,9 +61,9 @@ namespace RobotPortal
         [Test]
         public void TestFilterReportName()
         {
-            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionReports reports = new CtrlChildActionReports(driver);
 
             security.Login();
             portal.AcessMenuReport();
@@ -405,10 +405,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.ReadUser();
             
         }
@@ -420,12 +418,9 @@ namespace RobotPortal
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
             CtrlChildActionNewUser newuser = new CtrlChildActionNewUser(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuNewUsers();
-            newuser.TestNewUser();
-
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuRegisterUsers();
+            newuser.PermissionNewUser();
 
         }
 
@@ -436,10 +431,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionDeleteUser();
 
 
@@ -452,10 +445,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionEditInfoUser();
 
 
@@ -468,10 +459,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionViewProfileUser();
 
         }
@@ -483,10 +472,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionAddAndDeleteProfileUser();
 
         }
@@ -498,10 +485,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionEditStatusProfileUser();
 
         }
@@ -513,10 +498,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionViewPermissionProfileUser();
 
         }
@@ -528,10 +511,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuConsultUsers();
+            security.PermissionUserLogin();
+            portal.PermissionAcessMenuConsultUsers();
             permission.PermissionAddAndDeletePermissionProfileUser();
 
         }
@@ -543,10 +524,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuProfileConsult();
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileConsult();
             permission.InactiveProfilePermission();
         }
 
@@ -557,10 +536,8 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuProfileConsult();
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileConsult();
             permission.PermissionViewProfile();
         }
 
@@ -571,11 +548,165 @@ namespace RobotPortal
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
-            security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
-            portal.AcessMenuProfileRegister();
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileRegister();
             permission.CreateProfile();
+        }
+
+        [Test]
+        public void TestePermissionDeleteProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileConsult();
+            permission.PermissionDeleteProfile();
+        }
+
+        [Test]
+        public void TestePermissionViewPermissionProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileConsult();
+            permission.PermissionViewPermissionsProfile();
+        }
+
+        [Test]
+        public void TestePermissionAddAndDeleteProfile()
+        {
+            CtrlChildActionPermissionsProfile permission = new CtrlChildActionPermissionsProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionProfileLogin();
+            portal.PermissionAcessMenuProfileConsult();
+            permission.PermissionAddAndDeletePermissionProfile();
+        }
+
+        [Test]
+        public void TestePermissionViewReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionViewReport();
+        }
+
+        [Test]
+        public void TestePermissionDetailsReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionDetailsReport();
+        }
+
+        [Test]
+        public void TestePermissionEditReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();  
+            permission.PermissionEditReport();
+        }
+
+        [Test]
+        public void TestePermissionUnpublishReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionUnpublishReport();
+        }
+
+        [Test]
+        public void TestePermissionPublishReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionPublishReport();
+        }
+
+        [Test]
+        public void TestePermissionViewProfileReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionDeViewProfileReport();
+        }
+
+        [Test]
+        public void TestePermissionAddProfileReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionAddProfileReport();
+        }
+
+        [Test]
+        public void TestePermissionDeleteProfileReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionDeleteProfileReport();
+        }
+
+        [Test]
+        public void TestePermissionDeleteReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionDeleteReport();
+        }
+
+        [Test]
+        public void TestePermissionDeletePublishReport()
+        {
+            CtrlChildActionPermissionsReport permission = new CtrlChildActionPermissionsReport(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.PermissionReportLogin();
+            portal.PermissionAcessMenuConsultReport();
+            permission.PermissionDeletePublishReport();
         }
 
 

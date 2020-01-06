@@ -176,6 +176,29 @@ namespace RobotPortal
 
         }
 
+        public void SelectPermissions()
+        {
+            List<string> permissions = new List<string>();
+            permissions.Add("Ler usuários");
+            permissions.Add("Criar usuário");
+            permissions.Add("Excluir usuário");
+            permissions.Add("Editar dados do usuário");
+            permissions.Add("Ler perfis do usuário");
+            permissions.Add("Add/Excluir perfil  d usuário");
+            permissions.Add("Editar status dos perfis do usuário");
+            permissions.Add("Ler permissões dos usuários");
+            permissions.Add("Add/Excluir permissões de perfis");
+            int num = permissions.Count();
+
+            for (int i = 0; i < num; i++)
+            {
+                string namepermission = permissions.ElementAt(i);
+                IWebElement Box = FindByXpath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr[contains(string(), '"+(namepermission) +"')]/td/center/div/input");
+                Click(Box);
+            }
+
+        }
+
 
         public void Click(IWebElement element)
         {
