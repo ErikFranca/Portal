@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,6 +90,16 @@ namespace RobotPortal
             BoxPermissionDefaut = FindById("chk_default_pms");
             ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
         }
+
+        public void permissionuserInitialize()
+        {
+            LoginTypeSelectPicker = FindById("list-type_new");
+            FieldObs = FindByName("perfil");
+            ButtonNext = FindById("btn_prf");
+            BoxPermissionDefaut = FindById("chk_default_pms");
+            ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
+        }
+
         public void UserTab()
         {
             Thread.Sleep(3000);
@@ -488,6 +499,54 @@ namespace RobotPortal
             Click(ButtonNext);
 
             Click(BoxPermissionDefaut); 
+            Click(ButtonRegister);
+            AcceptAlert();
+
+        }
+
+        public void PermissionNewUser()
+        {
+            SwitchFrameInitialize();
+            Data();
+
+            SendKeys(newLogin, "TestePermissao1");
+            SendKeys(newEmail, "teste@teste.com.br");
+            Click(next);
+
+            Type();
+            Click(setNew);
+
+            permissionuserInitialize();
+            SelectByText(LoginTypeSelectPicker, "Gerente");
+            Click(ButtonNext);
+            //SendKeys(FieldObs, "TestePermissão");
+
+            Click(BoxPermissionDefaut);
+            Click(ButtonRegister);
+            AcceptAlert();
+
+        }
+
+        public void NewUserPermission()
+        {
+            SwitchFrameInitialize();
+            Data();
+
+            SendKeys(newLogin, "PermissionUserDefaut");
+            SendKeys(newEmail, "teste@1.com.br");
+            Click(next);
+
+            Type();
+            Click(setNew);
+
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Marisa");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
+            Click(ButtonNext);
+            //SendKeys(FieldObs, "TestePermissão");
+
+            SelectPermissions();
             Click(ButtonRegister);
             AcceptAlert();
 
