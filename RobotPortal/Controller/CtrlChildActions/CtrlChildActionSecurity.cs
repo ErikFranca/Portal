@@ -70,7 +70,6 @@ namespace RobotPortal
         public void Login()
         {
             Initialize();
-
             AssertAreEqual("Entrar", ButtonEnter);
             SendKeys(FieldLogin, "testeadmin");
             SendKeys(FieldPassword, "Starline123@");

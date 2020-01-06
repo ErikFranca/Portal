@@ -804,16 +804,212 @@ namespace RobotPortal
         [Test]
         public void TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico()
         {
-            CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
 
             security.LoginAdmin();
             portal.ChooseAllClients();
             portal.ChooseTeam();
-            portal.AcessMenuProfileConsult();
-            newUsers.TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTodosClientes()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTodosClientes();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilClienteNaoPossuo()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginUserTest2();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilClienteNaoPossuo();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTodasEquipes()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTodasEquipes();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoAdministradorPermissaoPadrao()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoAdministradorPermissaoPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoOperadorPermissaoPadrao()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoOperadorPermissaoPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoGerentePermissaoPadrao()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoGerentePermissaoPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoAnalistaPermissaoPadrao()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoAnalistaPermissaoPadrao();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoTodosPerfis()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoTodosPerfis();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoPerfilEspecifico()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoPerfilEspecifico();
+        }
+        [Test]
+        public void TesteInclusaoUsuarioNovoPerfilTipoValidaPermissaoPadrao()
+        {
+            CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileRegister();
+            newProfile.TesteInclusaoUsuarioNovoPerfilTipoValidaPermissaoPadrao();
         }
         
+            [Test]
+        public void TesteInativarPerfil()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionProfiles profiles = new CtrlChildActionProfiles(driver);
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            profiles.TesteInativarPerfil();
+        }
+        [Test]
+        public void TesteAdicaoPermissaoPerfilConsultaPerfil()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionProfiles profiles = new CtrlChildActionProfiles(driver);
+
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            profiles.TesteAdicaoPermissaoPerfilConsultaPerfil();
+        }
+        [Test]
+        public void TesteExclusaoPermissaoPerfilConsultaPerfil()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionProfiles profiles = new CtrlChildActionProfiles(driver);
+
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            profiles.TesteExclusaoPermissaoPerfilConsultaPerfil();
+        }
+        [Test]
+        public void TesteRemoverPerfil()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+            CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
+            CtrlChildActionProfiles profiles = new CtrlChildActionProfiles(driver);
+
+
+            security.LoginAdmin();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
+            portal.AcessMenuProfileConsult();
+            profiles.TesteRemoverPerfil();
+        }
     }
 }

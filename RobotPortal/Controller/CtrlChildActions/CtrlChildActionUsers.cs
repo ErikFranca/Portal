@@ -149,6 +149,8 @@ namespace RobotPortal
             Click(userAction);
             InitializeUserMenu();
             Click(EditProfile);
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
             InitializeChangePassword();
             SendKeys(email, "teste@3.com");
@@ -164,6 +166,8 @@ namespace RobotPortal
             Click(userAction);
             InitializeUserMenu();
             Click(EditProfile);
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
             InitializeChangePassword();
             SendKeys(email, "teste@2.com");
@@ -174,6 +178,7 @@ namespace RobotPortal
         }
         public void TesteAtualizacaoInformacoesUsuarioExistente()
         {
+            //Troca de frame
             SwitchFrame("iframe_opt");
             InitializeEditAndSeeUserTst2();
             Click(editUser);
@@ -185,73 +190,104 @@ namespace RobotPortal
         }
         public void ValidarVisualizacaoPerfilUsuarios()
         {
-            
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
             InitializeEditAndSeeUserTst2();
+
             Click(seeUser);
             
         }
         public void ValidarInativacaoPerfilConsultaUsuarios()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUserTst2();
             Click(seeUser);
+            
+            //Verifica se o Status do usuário está como Ativo
             SeeUserScreenTst2();
             AssertAreEqual("Ativo", userStatus);
 
         }
         public void TesteAdicaoPermissaoPerfilConsultaUsuario()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUser();
             Click(seeUser);
+
+            //Clica no botão Visualizar Permissões
             SeeUserScreen();
             Click(seePermission);
+
+            //Clica no botão Adicionar na tela de Permissões
             InitializePermissionScreen();
             Click(addPermission);
 
         }
         public void TesteExclusaoPermissaoPerfilConsultaUsuario()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUser();
             Click(seeUser);
+
+            //Clica no botão Visualizar Permissões
             SeeUserScreen();
             Click(seePermission);
+
+            //Clica no botão Remover na tela de Permissões
             InitializePermissionScreen();
             Click(remPermission);
 
         }
         public void TesteInclusaoPerfilViaConsultaUsuario()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUser();
             Click(seeUser);
+
+            //Clica no botão Adicionar Perfil e Seleciona o Perfil que será adicionado
             SeeUserScreen();
             Click(addProfile);
             Click(selectProfile);
+            
+            //Seleciona o Tipo de Perfil Analista
             InitializeTypeProfile();
             Click(selectAnalista);
 
         }
         public void TesteExclusaoPerfilViaConsultaUsuario()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUser();
             Click(seeUser);
+
+            //Clica no botão Remover Perfil
             SeeUserScreen();
             Click(remProfile);
 
         }
         public void TesteExclusaoUsuario()
         {
-            
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Clica no botão Remover Usuário
             InitializeEditAndSeeUser();
             Click(remUser);
 
