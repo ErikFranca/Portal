@@ -193,26 +193,37 @@ namespace RobotPortal
             Thread.Sleep(3000);
             profileMarisa = FindByCss(".optgroup-1:nth-child(5) .");
         }
+        public void FillNewProfile()
+        {
+            //Troca de frame
+            SwitchFrame("iframe_opt");
+            Data();
+            SendKeys(newLogin, "teste" + DateTime.Now.ToString("HHmmss"));
+            SendKeys(newEmail, "teste@teste.com");
+            Click(next);
+            Type();
+            Click(setNew);
+        }
         public void TesteInclusaoUsuarioCopiandoOutroUsuarioExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            UserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Register);
+            //Troca de frame
             SwitchFrame("iframe_opt");
+            
+            //Preenche o Perfil pré-existente que a cópia será feita
             Data();
             SendKeys(newLogin, "teste.5");
             SendKeys(newEmail, "teste@5.com");
             Click(next);
+            
+            //Clica em Copiar
             Type();
             Click(setCopy);
+
+            //Clica em Usuário
             Copy();
             Click(setUser);
+
+            //Preenche a base do Perfil que será copiado e registra
             ProfileTab();
             SendKeys(typeProfile, "Meu Usuário" + Keys.Enter);
             Click(btnRegister);
@@ -220,24 +231,24 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioAtribuindoPerfilExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            UserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Register);
+            //Troca de frame
             SwitchFrame("iframe_opt");
+
+            //Preenche o Perfil pré-existente que a cópia será feita
             Data();
             SendKeys(newLogin, "teste.5");
             SendKeys(newEmail, "teste@5.com");
             Click(next);
+
+            //Clica em Copiar
             Type();
             Click(setCopy);
+
+            //Clica em Usuário
             Copy();
             Click(setProfile);
+
+            //Preenche a base do Perfil que será copiado e registra
             ProfileTab();
             SendKeys(typeUser, "Operador" + Keys.Enter);
             Click(btnRegister);
@@ -245,502 +256,233 @@ namespace RobotPortal
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico()
         {
-            
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.6");
-            SendKeys(newEmail, "teste@6.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(marisa);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
+            //Preenche Novo Perfil
+            FillNewProfile();
+
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Marisa");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste");
+                      
+           
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.7");
-            SendKeys(newEmail, "teste@7.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste");
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo()
         {
-
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "user.kroton");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            //SwitchFrame("iframe_opt");
-            UserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.8");
-            SendKeys(newEmail, "teste@8.com");
-            Click(next);
-            Type();
-            Click(setNew);
+            //Preenche Novo Perfil
+            FillNewProfile();
             SelectCliente();
             Click(selectClient);
             ClientName();
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.9");
-            SendKeys(newEmail, "teste@9.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(teste);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste");
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.10");
-            SendKeys(newEmail, "teste@10.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(profileAllTeams);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste");
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.11");
-            SendKeys(newEmail, "teste@11.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(admin);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Administrador");
             SelectCliente();
             Click(selectProfileText);
-            SendKeys(selectProfileText, "teste" + Keys.Tab);
+            SendKeys(selectProfileText, "teste");
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
+
+            //Selciona as Permissões Padrão e Registra 
             SelectPermission();
             Click(defaultPermission);
             Click(registerPermission);
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.12");
-            SendKeys(newEmail, "teste@12.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(operador);
-            SelectCliente();
-            Click(selectProfileText);
-            SendKeys(selectProfileText, "teste" + Keys.Tab);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Operador");
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
+
+            //Selciona as Permissões Padrão e Registra 
             SelectPermission();
             Click(defaultPermission);
             Click(registerPermission);
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.13");
-            SendKeys(newEmail, "teste@13.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(gerente);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Gerente");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste" + Keys.Tab);
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
+
+            //Selciona as Permissões Padrão e Registra 
             SelectPermission();
             Click(defaultPermission);
             Click(registerPermission);
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.13");
-            SendKeys(newEmail, "teste@13.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste" + Keys.Tab);
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
+            
+            //Selciona as Permissões Padrão e Registra 
             SelectPermission();
             Click(defaultPermission);
             Click(registerPermission);
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.15");
-            SendKeys(newEmail, "teste@15.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(profileAllTeams);
-            SelectCliente();
-            Click(selectProfileText);
-            SendKeys(selectProfileText, "teste" + Keys.Tab);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Todas");
+            SelectByText(LoginTypeSelectPicker, "Analista");
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
             
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifico()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.15");
-            SendKeys(newEmail, "teste@15.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste perfil especifico" + Keys.Tab);
+
+            //Acessa Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
 
         }
         public void TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.15");
-            SendKeys(newEmail, "teste@15.com");
-            Click(next);
-            Type();
-            Click(setNew);
+            //Preenche Novo Perfil
+            FillNewProfile();
+
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
+            
+            //Acessa Menu de Permissões
             SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(profileAllTeams);
-            SelectCliente();
-            Click(selectProfileText);
-            SendKeys(selectProfileText, "teste" + Keys.Tab);
-            SelectCliente();
-            Click(selectProfileType);
-            ProfileType();
-            Click(analista);
             Click(nextforPermission);
+            
+            //Seleciona as Permissões Padrão
             SelectPermission();
             Click(defaultPermission);
+
+            //Valida as Permissões de acordo com valores pré-selecionados
             NamePermission();
 
         }
 
         public void TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica()
         {
+            //Preenche Novo Perfil
+            FillNewProfile();
 
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
-            SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            UserTab();
-            Click(Users);
-            Click(Register);
-            SwitchFrame("iframe_opt");
-            Data();
-            SendKeys(newLogin, "teste.15");
-            SendKeys(newEmail, "teste@15.com");
-            Click(next);
-            Type();
-            Click(setNew);
-            SelectCliente();
-            Click(selectClient);
-            ClientName();
-            Click(all);
-            Click(selectTeam);
-            ProfileTeam();
-            Click(monitoring);
+            //Seleciona Cliente, Equipe e Tipo do Usuário
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Analista");
             SelectCliente();
             Click(selectProfileText);
             SendKeys(selectProfileText, "teste perfil especifico" + Keys.Tab);
+            
+            //Acessa o Menu de Permissões
             SelectCliente();
             Click(nextforPermission);
 
@@ -748,22 +490,13 @@ namespace RobotPortal
 
         public void TestNewUser()
         {
-            SwitchFrameInitialize();
-            Data();
-
-            SendKeys(newLogin, "TestePermissao1");
-            SendKeys(newEmail, "teste@teste.com.br");
-            Click(next);
-
-            Type();
-            Click(setNew);
-
+            FillNewProfile(); 
+            
             TesteInitialize();
             SelectByText(ClientSelectPicker, "Marisa");
             SelectByText(EquipSelectPicker, "Testes Automatizados");
             SelectByText(LoginTypeSelectPicker, "Administrador");
             Click(ButtonNext);
-            //SendKeys(FieldObs, "TestePermissão");
 
             Click(BoxPermissionDefaut); 
             Click(ButtonRegister);

@@ -38,6 +38,11 @@ namespace RobotPortal
         public IWebElement inativePermission;
         public IWebElement Profile;
         public IWebElement RegisterProfile;
+        public IWebElement addProfile;
+        public IWebElement remUser;
+        public IWebElement remProfile;
+        public IWebElement selectProfile;
+        public IWebElement selectAnalista;
         public CtrlChildActionUsers(IWebDriver driver) : base(driver)
         {
             driverChildAction = driver;
@@ -87,20 +92,41 @@ namespace RobotPortal
             Thread.Sleep(3000);
             editUser = FindById("editIcon_160");
             seeUser = FindByCss("#tr_160 a:nth-child(3) > .md");
-
+            remUser = FindByCss("#tr_160 a:nth-child(4) > .md");
+        }
+        public void InitializeEditAndSeeUserTst2()
+        {
+            Thread.Sleep(3000);
+            editUser = FindById("editIcon_171");
+            seeUser = FindByCss("#tr_171 a:nth-child(3) > .md");
         }
         public void InitializePermissionScreen()
         {
             Thread.Sleep(3000);
-            addPermission = FindByCss("tr:nth-child(1) .btn-sm");
-            remPermission = FindByCss("tr:nth-child(1) .btn:nth-child(2) > .md");
-            inativePermission = FindByCss("tr:nth-child(4) .btn:nth-child(1) > .md");
+            addPermission = FindByCss("#tb_pms_others_167 tr:nth-child(1) .btn");
+            remPermission = FindByCss("#tb_pms_167 tr:nth-child(1) .btn:nth-child(2) > .md");
+            inativePermission = FindByCss("#tb_pms_167 tr:nth-child(2) .btn:nth-child(1) > .md");
         }
         public void SeeUserScreen()
         {
             Thread.Sleep(3000);
             userStatus = FindById("statusPrf_167");
             seePermission = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(3)");
+            addProfile = FindById("btn_show_prf_160");
+            remProfile = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(4)");
+            selectProfile = FindByCss("#prf_row_160 > div.col-9 > div > button");
+            
+        }
+        public void SeeUserScreenTst2()
+        {
+            Thread.Sleep(3000);
+            userStatus = FindById("status");
+
+        }
+        public void InitializeTypeProfile()
+        {
+            Thread.Sleep(3000);
+            selectAnalista = FindByCss("body > div.bs-container.dropdown.bootstrap-select.show > div > div.inner.show > ul > li:nth-child(5) > a");
         }
         public void InicializeEditScreen()
         {
@@ -119,15 +145,12 @@ namespace RobotPortal
         }
         public void TesteTrocaEmail()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
             AccessUserTags();
             Click(userAction);
             InitializeUserMenu();
             Click(EditProfile);
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
             InitializeChangePassword();
             SendKeys(email, "teste@3.com");
@@ -139,15 +162,12 @@ namespace RobotPortal
 
         public void TesteTrocaSenha()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
             AccessUserTags();
             Click(userAction);
             InitializeUserMenu();
             Click(EditProfile);
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
             InitializeChangePassword();
             SendKeys(email, "teste@2.com");
@@ -158,17 +178,9 @@ namespace RobotPortal
         }
         public void TesteAtualizacaoInformacoesUsuarioExistente()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
+            //Troca de frame
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+            InitializeEditAndSeeUserTst2();
             Click(editUser);
             InicializeEditScreen();
             Click(editDate);
@@ -178,60 +190,106 @@ namespace RobotPortal
         }
         public void ValidarVisualizacaoPerfilUsuarios()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
+
+            //Troca de frame
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+
+            InitializeEditAndSeeUserTst2();
+
             Click(seeUser);
             
         }
         public void ValidarInativacaoPerfilConsultaUsuarios()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "teste.2");
-            SendKeys(FieldPassword, "Starline@123");
-            Click(ButtonEnter);
-            InitializeUserTab();
-            Click(Arrow);
-            Click(Users);
-            Click(Consult);
+            //Troca de frame
             SwitchFrame("iframe_opt");
-            InitializeEditAndSeeUser();
+
+            //Clica no botão Visualizar Usuário
+            InitializeEditAndSeeUserTst2();
             Click(seeUser);
-            SeeUserScreen();
+            
+            //Verifica se o Status do usuário está como Ativo
+            SeeUserScreenTst2();
             AssertAreEqual("Ativo", userStatus);
 
         }
         public void TesteAdicaoPermissaoPerfilConsultaUsuario()
         {
-            Initialize();
-            AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "admin");
-            SendKeys(FieldPassword, "admin");
-            Click(ButtonEnter);
+            //Troca de frame
             SwitchFrame("iframe_opt");
-            AdminAccessClient();
-            Click(AllClients);
-            AdminAccessTeam();
-            Click(AllTeams);
-            InitializeUserTab();
-            Click(Users);
-            Click(Consult);
-            SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
             InitializeEditAndSeeUser();
             Click(seeUser);
+
+            //Clica no botão Visualizar Permissões
             SeeUserScreen();
             Click(seePermission);
+
+            //Clica no botão Adicionar na tela de Permissões
             InitializePermissionScreen();
             Click(addPermission);
+
+        }
+        public void TesteExclusaoPermissaoPerfilConsultaUsuario()
+        {
+            //Troca de frame
+            SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+
+            //Clica no botão Visualizar Permissões
+            SeeUserScreen();
+            Click(seePermission);
+
+            //Clica no botão Remover na tela de Permissões
+            InitializePermissionScreen();
+            Click(remPermission);
+
+        }
+        public void TesteInclusaoPerfilViaConsultaUsuario()
+        {
+            //Troca de frame
+            SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+
+            //Clica no botão Adicionar Perfil e Seleciona o Perfil que será adicionado
+            SeeUserScreen();
+            Click(addProfile);
+            Click(selectProfile);
+            
+            //Seleciona o Tipo de Perfil Analista
+            InitializeTypeProfile();
+            Click(selectAnalista);
+
+        }
+        public void TesteExclusaoPerfilViaConsultaUsuario()
+        {
+            //Troca de frame
+            SwitchFrame("iframe_opt");
+
+            //Clica no botão Visualizar Usuário
+            InitializeEditAndSeeUser();
+            Click(seeUser);
+
+            //Clica no botão Remover Perfil
+            SeeUserScreen();
+            Click(remProfile);
+
+        }
+        public void TesteExclusaoUsuario()
+        {
+            //Troca de frame
+            SwitchFrame("iframe_opt");
+
+            //Clica no botão Remover Usuário
+            InitializeEditAndSeeUser();
+            Click(remUser);
 
         }
     }

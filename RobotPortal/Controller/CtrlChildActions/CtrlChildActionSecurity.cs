@@ -43,10 +43,33 @@ namespace RobotPortal
             Warning2 = FindById("senha-warning");
         }
         //*Inicio dos metodos temporarios
+        public void LoginAdmin()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "admin");
+            SendKeys(FieldPassword, "admin");
+            Click(ButtonEnter);
+        }
+        public void LoginUserKroton()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "user.kroton");
+            SendKeys(FieldPassword, "Starline@123");
+            Click(ButtonEnter);
+        }
+        public void LoginUserTest2()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "teste.2");
+            SendKeys(FieldPassword, "Starline@123");
+            Click(ButtonEnter);
+        }
         public void Login()
         {
             Initialize();
-
             AssertAreEqual("Entrar", ButtonEnter);
             SendKeys(FieldLogin, "admin");
             SendKeys(FieldPassword, "admin");
