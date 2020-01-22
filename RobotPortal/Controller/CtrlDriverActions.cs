@@ -28,11 +28,18 @@ namespace RobotPortal
             Assert.IsFalse(IsElementPresent(By.CssSelector(element)));
         }
 
+        public bool AssertFalseXpath(string element)
+        {
+            Assert.IsFalse(IsElementPresent(By.XPath(element)));
+            return true;
+        }
+
         public IWebElement FindById(string id)
         {
             return driverAction.FindElement(By.Id(id));
 
         }
+
         public IWebElement FindByClassName(string element)
         {
             return driverAction.FindElement(By.ClassName(element));
@@ -54,6 +61,14 @@ namespace RobotPortal
         {
             Thread.Sleep(1000);
             driverAction.SwitchTo().Alert().Accept();
+        }
+        public string GetTextAlert()
+        {
+            Thread.Sleep(1000);
+            string AlertText = driverAction.SwitchTo().Alert().Text.ToString();
+            string AlertText1 = AlertText.Replace("Senha do usuário: ", "");
+           
+            return AlertText1;
         }
         public IWebElement FindByCss(string Css)
         {
@@ -224,6 +239,11 @@ namespace RobotPortal
             Thread.Sleep(1000);
             new SelectElement(element).SelectByText(conteudo);
         }
+        public void SelectByIndex(IWebElement element, int conteudo)
+        {
+            Thread.Sleep(1000);
+            new SelectElement(element).SelectByIndex(conteudo);
+        }
 
 
         public string GetElementText(IWebElement element)
@@ -254,10 +274,21 @@ namespace RobotPortal
 
         public bool IsElementDisplayed(IWebElement element)
         {
-            Thread.Sleep(1000);
+            Thread.Sleep(3000);
             return element.Displayed;
         }
-
+        public bool IsElementNotDisplayed(IWebElement element)
+        {
+            Thread.Sleep(1000);
+            if (element.Displayed)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
 
         public void AssertTitleAreEqual(string validacao)

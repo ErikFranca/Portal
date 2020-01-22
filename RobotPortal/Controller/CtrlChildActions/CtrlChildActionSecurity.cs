@@ -21,6 +21,9 @@ namespace RobotPortal
         public IWebElement Header;
         public IWebElement FieldPassword1;
         public IWebElement Warning2;
+        public IWebElement FieldOldPassword;
+        public IWebElement Tittle;
+
         public CtrlChildActionSecurity(IWebDriver driver) : base(driver)
         {
             driverChildAction = driver;
@@ -30,7 +33,6 @@ namespace RobotPortal
             FieldLogin = FindById("email");
             FieldPassword = FindById("password");
             ButtonEnter = FindByCss("#login_form > center > button");
-            
         }
         public void Validation()
         {
@@ -42,6 +44,28 @@ namespace RobotPortal
             FieldPassword1 = FindById("senha");
             Warning2 = FindById("senha-warning");
         }
+
+        public void ValidationInitialize()
+        {
+            driverAction.SwitchTo().ParentFrame();
+            Tittle = FindByXpath("//h4[contains(@style, 'font')]");
+        }
+
+        public void NewLoginInitialize()
+        {
+            FieldOldPassword = FindById("password");
+            FieldPassword = FindById("senha");
+            FieldPassword1 = FindById("senha2");
+            Warning2 = FindById("senha-warning");
+            ButtonEnter = FindByXpath("//button[contains(text(), 'Entrar')]");
+        }
+
+        public void SwitchFrameInitialize()
+        {
+            SwitchFrame("iframe_opt");
+        }
+
+
         //*Inicio dos metodos temporarios
         public void LoginAdmin()
         {
@@ -76,13 +100,22 @@ namespace RobotPortal
             Click(ButtonEnter);
         }
 
+        public void LoginCompiler()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "usercompiler");
+            SendKeys(FieldPassword, "Starline@123");
+            Click(ButtonEnter);
+        }
+
         public void PermissionUserLogin()
         {
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "permissionprofile");
-            SendKeys(FieldPassword, "Starline123@");
+            SendKeys(FieldLogin, "permissionuser");
+            SendKeys(FieldPassword, "Starline@123");
             Click(ButtonEnter);
         }
         public void PermissionProfileLogin()
@@ -90,7 +123,7 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Entrar", ButtonEnter);
-            SendKeys(FieldLogin, "testprofile");
+            SendKeys(FieldLogin, "permissionprofile");
             SendKeys(FieldPassword, "Starline123@");
             Click(ButtonEnter);
         }
@@ -135,9 +168,17 @@ namespace RobotPortal
             SendKeys(FieldPassword, "123546");
             Click(ButtonEnter);
             Validation();
-            AssertAreEqual("Senha inválida!", Warning1);
-            
+            AssertAreEqual("Senha inválida!", Warning1);      
 
+        }
+
+        public void LoginPreparedReport()
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "userreport");
+            SendKeys(FieldPassword, "Starline123@");
+            Click(ButtonEnter);
         }
 
         public void NovoLoginPortalTestSenha()
@@ -154,6 +195,24 @@ namespace RobotPortal
             SendKeys(FieldPassword1, "123456" + Keys.Tab);
             AssertAreEqual("Senha não atende aos requisitos mínimos: mínimo de 6 caracteres com letras maiúsculas e minúsculas, números e caractere especial.", Warning2);
             
+        }
+
+        public void NewLoginPrepareReport(string AlertText)
+        {
+            Initialize();
+            AssertAreEqual("Entrar", ButtonEnter);
+            SendKeys(FieldLogin, "userreport");
+            SendKeys(FieldPassword, AlertText);
+            Click(ButtonEnter);
+            Validation();
+            AssertAreEqual("Sua senha deve ser alterada!", Warning1);
+            NewLoginInitialize();
+            SendKeys(FieldOldPassword, AlertText);
+            SendKeys(FieldPassword, "Starline123@");
+            SendKeys(FieldPassword1, "Starline123@" + Keys.Tab);
+            Click(ButtonEnter);
+            ValidationInitialize();
+
         }
         public void TesteQuantidadeLoginsIncorretosExcedida()
         {

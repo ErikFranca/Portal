@@ -31,6 +31,8 @@ namespace RobotPortal
         public IWebElement ProfileMenu;
         public IWebElement ProfileConsultMenu;
         public IWebElement ProfileRegisterMenu;
+        public IWebElement QuitTab;
+        public IWebElement Quit;
 
 
         public CtrlCtrlPortalActions(IWebDriver driver) : base(driver)
@@ -44,15 +46,15 @@ namespace RobotPortal
 
             ArrowCloseMenu = FindById("close-nav");
             ArrowMenu = FindByCss("#open-nav > a");
-            ReportMenu = FindByCss("#navBar-lateral > li:nth-child(3) > a");
-            ReportConsultMenu = FindByCss("#submenu-report > li:nth-child(1) > a");
-            ReportCompileMenu = FindByCss("#submenu-report > li:nth-child(2) > a");
-            UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
-            UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
-            UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
-            ProfileMenu = FindByCss("#navBar-lateral > li:nth-child(2) > a");
-            ProfileConsultMenu = FindByCss("#submenu-profile > li:nth-child(1) > a:nth-child(1)");
-            ProfileRegisterMenu = FindByCss("#submenu-profile > li:nth-child(2) > a:nth-child(1)");
+            ReportMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Relatórios ')]");
+            ReportConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'reports')]");
+            ReportCompileMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_report')]");
+            UserMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Usuários ')]");
+            UserConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'users')]");
+            UserRegisterMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_user')]");
+            ProfileMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Perfis ')]");
+            ProfileConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'profiles')]");
+            ProfileRegisterMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_profile')]");
         }
 
         public void InitializePermissionReport()
@@ -61,9 +63,9 @@ namespace RobotPortal
 
             ArrowCloseMenu = FindById("close-nav");
             ArrowMenu = FindByCss("#open-nav > a");
-            ReportMenu = FindByXpath("//*[@id='navBar-lateral']/li[2]/a");
-            ReportConsultMenu = FindByXpath("//*[@id='submenu-report']/li[1]/a");
-            ReportCompileMenu = FindByXpath("//*[@id='submenu-report']/li[2]/a");
+            ReportMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Relatórios ')]");
+            ReportConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'reports')]");
+            ReportCompileMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_report')]");
         }
 
         public void InitializePermissionUser()
@@ -72,9 +74,9 @@ namespace RobotPortal
 
             ArrowCloseMenu = FindById("close-nav");
             ArrowMenu = FindByCss("#open-nav > a");
-            UserMenu = FindByCss("#navBar-lateral > li:nth-child(1) > a > b");
-            UserConsultMenu = FindByCss("#submenu-user > li:nth-child(1) > a");
-            UserRegisterMenu = FindByCss("#submenu-user > li:nth-child(2) > a");
+            UserMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Usuários ')]");
+            UserConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'users')]");
+            UserRegisterMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_user')]");
         }
 
         public void InitializePermissionProfile()
@@ -82,10 +84,10 @@ namespace RobotPortal
             Thread.Sleep(3000);
 
             ArrowCloseMenu = FindById("close-nav");
-            ArrowMenu = FindByCss("#open-nav > a"); 
-            ProfileMenu = FindByXpath("//*[@id='navBar-lateral']/li/a");
-            ProfileConsultMenu = FindByXpath("//*[@id='submenu-profile']/li[1]/a");
-            ProfileRegisterMenu = FindByXpath("//*[@id='submenu-profile']/li[2]/a");
+            ArrowMenu = FindByCss("#open-nav");
+            ProfileMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/a/b[contains(text(),'Perfis ')]");
+            ProfileConsultMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'profiles')]");
+            ProfileRegisterMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_profile')]");
         }
 
         public void SelectClientInitialize()
@@ -95,18 +97,34 @@ namespace RobotPortal
             ButtonMarisaClient = FindByXpath("//*[@class='card-img '][contains(@src,'marisa.png')]");
         }
 
+        public void QuitInitialize()
+        {
+            QuitTab = FindByXpath("//*/li[4][contains(@class, 'dropdown')]");
+            Quit = FindByXpath("//a[contains(@href, 'disconnect.php')]");
+        }
+
         public void SelectTeamInitialize()
         {
             Thread.Sleep(3000);
             ButtonAllTeams = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
         }
 
+        public void Logout()
+        {
+            driverAction.SwitchTo().ParentFrame();
+            QuitInitialize();
+            Click(QuitTab);
+            Click(Quit);
+        }
+
         public void AcessMenuReport()
         {
             Initialize();
 
-            
-            Click(ArrowMenu);
+            if (!ArrowCloseMenu.Displayed)
+            {
+                Click(ArrowMenu);
+            }
             Click(ReportMenu);
             Click(ReportConsultMenu);
         }
@@ -154,6 +172,7 @@ namespace RobotPortal
 
         public void AcessMenuConsultUsers()
         {
+            
             Initialize();
 
             if (!ArrowCloseMenu.Displayed)

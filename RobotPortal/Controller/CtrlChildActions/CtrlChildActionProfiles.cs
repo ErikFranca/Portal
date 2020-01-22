@@ -11,7 +11,7 @@ namespace RobotPortal
     {
         public static IWebDriver driverChildAction;
         public IWebElement editProfile;
-        public IWebElement seeProfile;
+        public IWebElement seeProfilePermissions;
         public IWebElement inativeProfile;
         public IWebElement removeProfile;
         public IWebElement statusProfile;
@@ -24,17 +24,17 @@ namespace RobotPortal
         public void InitializeEditAndSeeProfilePermission()
         {
             Thread.Sleep(3000);
-            editProfile = FindById("editIcon_139");
-            seeProfile = FindByCss("#tr_139 > td:nth-child(7) > a:nth-child(3)");
-            removeProfile = FindByCss("#tr_139 > td:nth-child(7) > a:nth-child(4)");
-            statusProfile = FindById("status_139");
+            editProfile = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@data-original-title,'Editar perfil')]");
+            seeProfilePermissions = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@data-original-title,'Ver permissões')]");
+            removeProfile = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@data-original-title,'Excluir perfil')]");
+            //statusProfile = FindById("status_139");
         }
         
         public void InitializePermission()
         {
             Thread.Sleep(3000);
-            addPermission = FindByCss("#tb_pms_others_139 > tbody > tr:nth-child(1) > td:nth-child(2) > button");
-            removePermission = FindByCss("#tb_pms_139 > tbody > tr:nth-child(1) > td:nth-child(2) > button:nth-child(2)");
+            addPermission = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/div[4]/table/tbody/tr/td/button[contains(text(),'Adicionar')]");
+            removePermission = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/div[3]/table/tbody/tr/td/button[contains(@data-original-title,'Excluir Perfil')]");
         }
         public void TesteInativarPerfil()
         {
@@ -53,7 +53,7 @@ namespace RobotPortal
 
             //Clica no botão Ver Perfil
             InitializeEditAndSeeProfilePermission();
-            Click(seeProfile);
+            Click(seeProfilePermissions);
 
             //Clica no botão Adicionar Permissão 
             InitializePermission();
@@ -66,7 +66,7 @@ namespace RobotPortal
 
             //Clica no botão Ver Perfil
             InitializeEditAndSeeProfilePermission();
-            Click(seeProfile);
+            Click(seeProfilePermissions);
 
             //Clica no botão Excluir Permissão
             InitializePermission();

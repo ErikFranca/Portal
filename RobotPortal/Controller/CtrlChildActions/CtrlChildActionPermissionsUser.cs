@@ -43,13 +43,13 @@ namespace RobotPortal
             //Declara de elementos
             Thread.Sleep(3000);
             Resultemail = FindById("email");
-            IconDelete = FindByName("trash");
-            IconInfo = FindByName("create");
-            IconViewPermission = FindByName("cog");
+            IconDelete = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@href,'del')]");
+            IconInfo = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@href,'del')]");
+            IconViewPermission = FindByXpath("/html/body/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/a[contains(@data-original-title,'Ver Permissões')]");
             FieldInfo = FindByXpath("//*[@type='text'][contains(@id,'email')]");
             FieldStatus = FindByClassName("selectpicker");
-            IconSaveInfo = FindByName("bookmark");
-            IconViewProfile = FindByName("person");
+            IconSaveInfo = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@href,'save')]");
+            IconViewProfile = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@data-original-title,'Ver perfis')]");
             ViewProfile = FindByClassName("table-responsive");
         }
 
@@ -67,7 +67,7 @@ namespace RobotPortal
             //Declaração de elementos
             Thread.Sleep(3000);
             TittlePermissions = FindByXpath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div[contains(@id, 'permissao')]");
-            DeletePermission = FindByXpath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div[3]/table/tbody/tr/td[2]/button[2]/ion-icon");
+            DeletePermission = FindByXpath("/html/body/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/button[contains(@data-original-title,'Excluir Perfil')]");
             AddPermission = FindByXpath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div[4]/table/tbody/tr/td/button");
         }
 
@@ -158,7 +158,7 @@ namespace RobotPortal
 
             //Adiciona um novo perfil de usuário
             Click(IconAddProfile);
-            SelectByText(TypeProfileFilter, "Operador");
+            SelectByText(TypeProfileFilter, "Analista");
             Click(ButtonConfirm);
 
         }

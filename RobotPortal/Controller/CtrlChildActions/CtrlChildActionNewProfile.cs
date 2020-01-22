@@ -73,7 +73,7 @@ namespace RobotPortal
             TesteInitialize();
             SelectByText(ClientSelectPicker, "Marisa");
             SelectByText(EquipSelectPicker, "Testes Automatizados");
-            SelectByText(LoginTypeSelectPicker, "Analista");
+            SelectByText(LoginTypeSelectPicker, "Analista");        
             Click(ButtonNext);
         }
         public void TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica()

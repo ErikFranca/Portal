@@ -14,8 +14,8 @@ namespace RobotPortal
         public IWebElement EditReport;
         public IWebElement FieldObs;
         public IWebElement SaveEdit;
-        public IWebElement Unpublish;
-        public IWebElement Publish;
+        public IWebElement UnpublishIcon;
+        public IWebElement PublishIcon;
         public IWebElement ClientFilter;
         public IWebElement ViewProfile;
         public IWebElement IconAddProfile;
@@ -24,6 +24,7 @@ namespace RobotPortal
         public IWebElement DeleteProfileReport;
         public IWebElement DeleteReport;
         public IWebElement DeletePublish;
+        public IWebElement UnpublishTemp;
 
 
 
@@ -45,8 +46,6 @@ namespace RobotPortal
             EditReport = FindByName("create");
             FieldObs = FindByXpath("/html/body/div/div/form/table/tbody/tr/th[2]/div/input[contains(@type, 'text')]");
             SaveEdit = FindByName("bookmark");
-            Unpublish = FindByName("radio-button-on");
-            Publish = FindByName("radio-button-off");
             ViewProfile = FindByName("person");
             IconAddProfile = FindByXpath("//*[@type='button'][contains(@class,'btn btn-outline-secondary float-right btn-lg')]");
             TypeProfileFilter = FindByXpath("//*[@class='selectpicker'][contains(@title,'Perfil')]");
@@ -54,6 +53,32 @@ namespace RobotPortal
             DeleteProfileReport = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/table/tbody/tr/td[6]/a[3]/ion-icon");
             DeleteReport = FindByName("close");
             DeletePublish = FindByName("trash");
+        }
+
+        public void IconPublishInitialize()
+        {
+            string Unpublish = "/html/body/div/div/form/table/tbody/tr/td[5]/a[contains(@href,'inactive')][contains(@data-original-title,'Despublicar')][not(contains(@class, 'hide'))]";
+            string Publish = "/html/body/div/div/form/table/tbody/tr/td[5]/a[contains(@href,'active')][contains(@data-original-title,'Publicar')][not(contains(@class, 'hide'))]";
+
+            if ((driverChildAction.FindElements(By.XPath(Unpublish)).Count != 0) || (driverChildAction.FindElements(By.XPath(Publish)).Count == 0))
+            {
+
+                UnpublishTemp = FindByXpath(Unpublish);
+
+                if (driverChildAction.FindElements(By.XPath(Unpublish)).Count >= 2)
+                {
+                    Click(UnpublishTemp);
+                    PublishIcon = FindByXpath(Publish);
+                }
+                UnpublishIcon = FindByXpath(Unpublish);
+            }
+            else
+            {
+                UnpublishIcon = FindByXpath(Unpublish);
+                Click(UnpublishIcon);
+                UnpublishIcon = FindByXpath(Unpublish);
+                PublishIcon = FindByXpath(Publish);
+            }
         }
 
         public void CompileInitialize()
@@ -139,12 +164,12 @@ namespace RobotPortal
             
             //Troca de frame
             SwitchFrameInitialize();
-            
+
             //Chamada de elementos novos na tela
-            TableInitialize();
+            IconPublishInitialize();
             
             //Clica no botão de despublicar
-            Click(Unpublish);
+            Click(UnpublishIcon);
         }
 
         public void PermissionPublishReport()
@@ -162,10 +187,10 @@ namespace RobotPortal
             SwitchFrameInitialize();
             
             //Chamada de novos elementos na tela
-            TableInitialize();
+            IconPublishInitialize();
             
             //Clica no botão de publicar relatório
-            Click(Publish);
+            Click(PublishIcon);
         }
 
         public void PermissionDeViewProfileReport()
@@ -212,7 +237,7 @@ namespace RobotPortal
             Click(ViewProfile);
             IsElementDisplayed(IconAddProfile);
             Click(IconAddProfile);
-            SelectByText(TypeProfileFilter, "Kroton | Testes Automatizados | Teste relatórios | Administrador");
+            SelectByIndex(TypeProfileFilter, 0);
             Click(ButtonConfirm);
 
         }

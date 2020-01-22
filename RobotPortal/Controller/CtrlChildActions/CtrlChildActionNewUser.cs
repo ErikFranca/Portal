@@ -60,6 +60,8 @@ namespace RobotPortal
         public IWebElement BoxPermissionDefaut;
         public IWebElement ButtonNext;
         public IWebElement ButtonRegister;
+        public string AlertText1;
+
 
         public CtrlChildActionNewUser(IWebDriver driver) : base(driver)
         {
@@ -86,6 +88,16 @@ namespace RobotPortal
             EquipSelectPicker = FindById("area");
             LoginTypeSelectPicker = FindById("list-type_new");
             FieldObs = FindByName("perfil");
+            ButtonNext = FindById("btn_prf");
+            BoxPermissionDefaut = FindById("chk_default_pms");
+            ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
+        }
+
+        public void PrepareUserInitialize()
+        {
+            Thread.Sleep(3000);
+            ClientSelectPicker = FindById("cst_id");
+            LoginTypeSelectPicker = FindById("list-type_new");
             ButtonNext = FindById("btn_prf");
             BoxPermissionDefaut = FindById("chk_default_pms");
             ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
@@ -159,7 +171,7 @@ namespace RobotPortal
         {
             Thread.Sleep(3000);
             defaultPermission = FindById("chk_default_pms");
-            allPermission = FindById("chk_pms");
+            allPermission = FindByXpath("//*/label[contains(text(), 'Selecionar todas as permissões')]");
             registerPermission = FindByCss("#formPermission > div:nth-child(2) > div > button");
         }
         public void ClientName()
@@ -550,6 +562,55 @@ namespace RobotPortal
             Click(ButtonRegister);
             AcceptAlert();
 
+        }
+
+        public void NewUserReport()
+        {
+            SwitchFrameInitialize();
+            Data();
+
+            SendKeys(newLogin, "Userreport");
+            SendKeys(newEmail, "teste@1.com.br");
+            Click(next);
+
+            Type();
+            Click(setNew);
+
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Administrador");
+            SendKeys(FieldObs, "");
+            Click(ButtonNext);
+
+            SelectPermission();
+            Click(allPermission);
+            Click(ButtonRegister);
+            AlertText1 = GetTextAlert();
+            AcceptAlert();
+        }
+
+        public void PrepareNewUser()
+        {
+            SwitchFrameInitialize();
+            Data();
+
+            SendKeys(newLogin, "Prepareuser");
+            SendKeys(newEmail, "teste@1teste1.com.br");
+            Click(next);
+
+            Type();
+            Click(setNew);
+
+            PrepareUserInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(LoginTypeSelectPicker, "Gerente");
+            Click(ButtonNext);
+
+            SelectPermission();
+            Click(allPermission);
+            Click(ButtonRegister);
+            AcceptAlert();
         }
     }
 }

@@ -47,24 +47,7 @@ namespace RobotPortal
         {
             driverChildAction = driver;
         }
-        public void Initialize()
-        {
-            Thread.Sleep(3000);
-            FieldLogin = FindById("email");
-            FieldPassword = FindById("password");
-            ButtonEnter = FindByCss("#login_form > center > button");
-
-        }
-        public void AdminAccessClient()
-        {
-            Thread.Sleep(3000);
-            AllClients = FindByCss(".col-auto:nth-child(2) .card-img");
-        }
-        public void AdminAccessTeam()
-        {
-            Thread.Sleep(3000);
-            AllTeams = FindByCss(".col-auto:nth-child(2) .card-img-top");
-        }
+        
         public void AccessUserTags()
         {
             Thread.Sleep(3000);
@@ -76,23 +59,12 @@ namespace RobotPortal
             Logout = FindByCss(".dropdown-menu > li:nth-child(3) > a");
             EditProfile = FindByCss(".dropdown-menu > li:nth-child(1) > a");
         }
-        
-        public void InitializeUserTab()
-        {
-            Thread.Sleep(3000);
-            Consult = FindByCss("#submenu-user > li:nth-child(1) > a");
-            Arrow = FindByCss("#open-nav > .close-open-btn");
-            Users = FindByCss("#navBar-lateral > li:nth-child(1) > a");
-            Register = FindByCss("#submenu-user > li:nth-child(2) > a");
-            Profile = FindByCss("#navBar-lateral > li:nth-child(2) > a");
-            RegisterProfile = FindByCss("#submenu-profile > li:nth-child(2) > a");
-        }
         public void InitializeEditAndSeeUser()
         {
             Thread.Sleep(3000);
-            editUser = FindById("editIcon_160");
-            seeUser = FindByCss("#tr_160 a:nth-child(3) > .md");
-            remUser = FindByCss("#tr_160 a:nth-child(4) > .md");
+            editUser = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@href,'edit')]");
+            seeUser = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@data-original-title,'Ver perfis')]");
+            remUser = FindByXpath("/html/body/div/div/form/table/tbody/tr/td/a[contains(@href,'del')]");
         }
         public void InitializeEditAndSeeUserTst2()
         {
@@ -103,18 +75,18 @@ namespace RobotPortal
         public void InitializePermissionScreen()
         {
             Thread.Sleep(3000);
-            addPermission = FindByCss("#tb_pms_others_167 tr:nth-child(1) .btn");
-            remPermission = FindByCss("#tb_pms_167 tr:nth-child(1) .btn:nth-child(2) > .md");
-            inativePermission = FindByCss("#tb_pms_167 tr:nth-child(2) .btn:nth-child(1) > .md");
+            addPermission = FindByXpath("/html/body/div[1]/div/div[17]/div/div/div[2]/div/div/div/div/div[4]/table/tbody/tr/td[2]/button[contains(text(),'Adicionar')]");
+            remPermission = FindByXpath("/html/body/div[1]/div/div[17]/div/div/div[2]/div/div/div/div/div[3]/table/tbody/tr/td[2]/button[2][contains(@data-original-title,'Excluir Perfil')]");
+            inativePermission = FindByXpath("/html/body/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/button[contains(@data-original-title,'Inativar Permissão')]");
         }
         public void SeeUserScreen()
         {
             Thread.Sleep(3000);
-            userStatus = FindById("statusPrf_167");
-            seePermission = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(3)");
-            addProfile = FindById("btn_show_prf_160");
-            remProfile = FindByCss("#tr_prf_167160 > td:nth-child(6) > a:nth-child(4)");
-            selectProfile = FindByCss("#prf_row_160 > div.col-9 > div > button");
+            userStatus = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/table/tbody/tr/td[5][contains(text(),'Ativo')]");
+            seePermission = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/table/tbody/tr/td[6]/a[3][contains(@data-original-title,'Ver Permissões')]");
+            addProfile = FindByXpath("/html/body/div/div/div/div/div/div/div/div/div/div/div/div/button[contains(text(),' Adicionar Perfil ')]");
+            remProfile = FindByXpath("/html/body/div[1]/div/div[1]/div/div/div[2]/div/div/div/div/table/tbody/tr/td[6]/a[4][contains(@data-original-title,'Excluir Perfil!')]");
+            selectProfile = FindByXpath("/html/body/div[1]/div/div/div/div/div[2]/div/div/div/div/div/div[1]/form/div/div[2]/div/select[contains(@class, 'selectpicker')]");
             
         }
         public void SeeUserScreenTst2()
@@ -229,6 +201,7 @@ namespace RobotPortal
             //Clica no botão Adicionar na tela de Permissões
             InitializePermissionScreen();
             Click(addPermission);
+
 
         }
         public void TesteExclusaoPermissaoPerfilConsultaUsuario()
