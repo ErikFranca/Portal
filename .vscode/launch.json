@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/RobotPortal/bin/Debug/netcoreapp2.1/RobotPortal.dll",
+            "program": "${workspaceFolder}/bin/Debug/netcoreapp2.1/RobotPortal.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/RobotPortal",
+            "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
