@@ -1,6 +1,11 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System.Threading;
+using System.Linq;
+using System.Collections.Generic;
+using System;
+
 
 
 namespace RobotPortal
@@ -24,6 +29,24 @@ namespace RobotPortal
         public IWebElement TittlePermissions;
         public IWebElement DeletePermission;
         public IWebElement AddPermission;
+        public IWebElement ClientSelectPicker;
+        public IWebElement EquipSelectPicker;
+        public IWebElement LoginTypeSelectPicker;
+        public IWebElement FieldObs;
+        public IWebElement ButtonNext;
+        public IWebElement BoxPermissionDefaut;
+        public IWebElement ButtonRegister;
+        public IWebElement newLogin;
+        public IWebElement newEmail;
+        public IWebElement next;
+        public IWebElement setCopy;
+        public IWebElement setNew;
+        public IWebElement CheckBoxUser;
+
+
+
+
+
 
 
         public CtrlChildActionPermissionsUser(IWebDriver driver) : base(driver)
@@ -53,6 +76,35 @@ namespace RobotPortal
             ViewProfile = FindByClassName("table-responsive");
         }
 
+        public void DataInitialize()
+        {
+            Thread.Sleep(3000);
+            newLogin = FindById("login");
+            newEmail = FindById("email");
+            next = FindByCss(".btn-info");
+
+        }
+
+        public void TypeInitialize()
+        {
+            Thread.Sleep(3000);
+            setCopy = FindById("radio_cp");
+            setNew = FindById("radio_cr");
+        }
+
+        public void TesteInitialize()
+        {
+            Thread.Sleep(3000);
+            ClientSelectPicker = FindById("cst_id");
+            EquipSelectPicker = FindById("area");
+            LoginTypeSelectPicker = FindById("list-type_new");
+            FieldObs = FindByName("perfil");
+            ButtonNext = FindById("btn_prf");
+            BoxPermissionDefaut = FindById("chk_default_pms");
+            ButtonRegister = FindByCss("#formPermission > div:nth-child(2) > div > button");
+        }
+
+        
         public void ProfileTabInitialize()
         {
             //Declaração de elementos
@@ -232,6 +284,32 @@ namespace RobotPortal
 
             //Adiciona uma permissão
             Click(AddPermission);
+
+        }
+
+        public void PermissionNewUser()
+        {
+            SwitchFrameInitialize();
+            DataInitialize();
+
+            SendKeys(newLogin, "TestePermissao1");
+            SendKeys(newEmail, "teste@teste.com.br");
+            Click(next);
+
+            TypeInitialize();
+            Click(setNew);
+
+            TesteInitialize();
+            SelectByText(ClientSelectPicker, "Todos");
+            SelectByText(EquipSelectPicker, "Testes Automatizados");
+            SelectByText(LoginTypeSelectPicker, "Administrador");
+            SendKeys(FieldObs, "");
+            Click(ButtonNext);
+
+            PermissionsUserSelector();
+            
+            Click(ButtonRegister);
+            AcceptAlert();
 
         }
     }

@@ -4,6 +4,9 @@ using OpenQA.Selenium.Chrome;
 using System;
 using System.IO;
 using System.Text;
+using TestProject.SDK.Tests;
+using TestProject.SDK.Tests.Helpers;
+using TestProject.SDK.PageObjects;
 
 namespace RobotPortal
 {
@@ -65,6 +68,14 @@ namespace RobotPortal
         }
 
         [Test]
+        public void LoginFactory()
+        {
+            CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
+
+            security.Login();
+        }
+
+        [Test]
         public void Test0000_PrepareUserReport()
         {
             CtrlChildActionCompilerReports compile = new CtrlChildActionCompilerReports(driver);
@@ -75,8 +86,6 @@ namespace RobotPortal
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
 
             security.Login();
-            portal.ChooseAllClients();
-            portal.ChooseTeam();
             portal.AcessMenuNewUsers();
             newUser.NewUserReport();
             portal.Logout();
@@ -127,39 +136,42 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TestCompileReport() //OK
+        public void Test0025_CompileReport() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
             CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginCompiler();
+            security.LoginPreparedReport();
+            portal.ChooseAllClients();
             portal.AcessMenuCompile();
             compiler.CompileSimpleReport();
 
         }
 
         [Test]
-        public void TestCompileReportAddProfile() //OK
+        public void Test0026_CompileReportAddProfile() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
             CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginCompiler();
+            security.LoginPreparedReport();
+            portal.ChooseAllClients();
             portal.AcessMenuCompile();
             compiler.CompileReportAddProfile();
 
         }
 
         [Test]
-        public void TestCompileReportMakeChanges() //OK
+        public void Test0027_CompileReportMakeChanges() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
             CtrlChildActionCompilerReports compiler = new CtrlChildActionCompilerReports(driver);
 
-            security.LoginCompiler();
+            security.LoginPreparedReport();
+            portal.ChooseAllClients();
             portal.AcessMenuCompile();
             compiler.CompileReportMakeChanges();
 
@@ -463,15 +475,17 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TestePermissionNewUser() //OK
+        public void Test0028_PermissionNewUser() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
-            CtrlChildActionNewUser newuser = new CtrlChildActionNewUser(driver);
+            CtrlChildActionPermissionsUser permission = new CtrlChildActionPermissionsUser(driver);
 
-            security.PermissionUserLogin();
+            security.Login();
+            portal.ChooseAllClients();
+            portal.ChooseTeam();
             portal.PermissionAcessMenuRegisterUsers();
-            newuser.PermissionNewUser();
+            permission.PermissionNewUser();
 
         }
 
@@ -702,7 +716,10 @@ namespace RobotPortal
             portal.ChooseAllClients();
             portal.ChooseTeam();
             portal.AcessMenuNewUsers();
-            newUsers.TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico();
+            //Assert.IsTrue(newUsers.TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico("admin"));
+            //Assert.IsFalse(newUsers.TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico("admin"));
+
+
         }
 
         [Test]

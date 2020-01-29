@@ -81,8 +81,8 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Compilação de Relatórios", TittleCompiler);
-            Click(FilterID);
-            SendKeys(FieldFilterID, "47" + Keys.Enter);
+            SelectByText(FilterIdClient, "Kroton");
+            SelectByIndex(FilterID, 1);
             Click(FilterProfileType);
             FilterTypeInitialize();
             Click(ButtonGenerate);
@@ -119,8 +119,8 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Compilação de Relatórios", TittleCompiler);
-            Click(FilterID);
-            SendKeys(FieldFilterID, "47" + Keys.Enter);
+            SelectByText(FilterIdClient, "Kroton");
+            SelectByIndex(FilterID, 1);
             Click(FilterProfileType);
             FilterTypeInitialize();
             SelectByText(ProfileFilter, "Gerente");
@@ -136,8 +136,8 @@ namespace RobotPortal
             Initialize();
 
             AssertAreEqual("Compilação de Relatórios", TittleCompiler);
-            Click(FilterID);
-            SendKeys(FieldFilterID, "47" + Keys.Enter);
+            SelectByText(FilterIdClient, "Kroton");
+            SelectByIndex(FilterID, 1); 
             Click(FilterProfileType);
             FilterTypeInitialize();
             SelectByText(ProfileFilter, "Gerente");

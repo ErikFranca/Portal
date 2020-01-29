@@ -1,16 +1,7 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
-using System;
+﻿using OpenQA.Selenium;
 using System.Threading;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Interactions;
-using System.IO;
-using System.Net;
-using System.Text;
+
+
 
 namespace RobotPortal
 {
@@ -21,8 +12,6 @@ namespace RobotPortal
         public IWebElement ReportMenu;
         public IWebElement ReportConsultMenu;
         public IWebElement ReportCompileMenu;
-        public IWebElement ButtonAllClients;
-        public IWebElement ButtonAllTeams;
         public IWebElement ButtonMarisaClient;
         public IWebElement UserMenu;
         public IWebElement UserConsultMenu;
@@ -35,10 +24,13 @@ namespace RobotPortal
         public IWebElement Quit;
 
 
+
         public CtrlCtrlPortalActions(IWebDriver driver) : base(driver)
         {
             driverPortalAction = driver;
         }
+
+
 
         public void Initialize()
         {
@@ -90,10 +82,11 @@ namespace RobotPortal
             ProfileRegisterMenu = FindByXpath("/html/body/main/div/nav/div/ul/li/ul/li/a[contains(@href,'create_profile')]");
         }
 
+
         public void SelectClientInitialize()
         {
             Thread.Sleep(3000);
-            ButtonAllClients = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
+            //ButtonAllClients = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
             ButtonMarisaClient = FindByXpath("//*[@class='card-img '][contains(@src,'marisa.png')]");
         }
 
@@ -106,7 +99,7 @@ namespace RobotPortal
         public void SelectTeamInitialize()
         {
             Thread.Sleep(3000);
-            ButtonAllTeams = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
+            //ButtonAllTeams = FindByCss("body > div > div > div:nth-child(2) > div > a > img");
         }
 
         public void Logout()
@@ -149,30 +142,40 @@ namespace RobotPortal
             Click(ReportCompileMenu);
         }
 
-        public void ChooseAllClients()
+        public void ChooseAllClients(string client = "Todos")
         {
             SwitchFrame("iframe_opt");
-            SelectClientInitialize();
-            Click(ButtonAllClients);
+
+            IWebElement ButtonClients = FindByXpath("//img[contains(@alt, 'Logo " + client + "')]");
+
+
+            if (IsElementDisplayed(ButtonClients))
+            {
+                Click(ButtonClients);
+            }
         }
 
         public void ChooseMarisaClient()
         {
             SwitchFrame("iframe_opt");
             SelectClientInitialize();
-            Click(ButtonAllClients);
+            //Click(ButtonAllClients);
         }
 
-        public void ChooseTeam()
+        public void ChooseTeam(string equipe = "Todas")
         {
             SelectTeamInitialize();
-            Click(ButtonAllTeams);
+            IWebElement ButtonTeams = FindByCss("//img[contains(@alt, 'Logo "+ equipe +"')]");
 
+            if (IsElementDisplayed(ButtonTeams))
+            {
+                Click(ButtonTeams);
+            }
         }
 
         public void AcessMenuConsultUsers()
         {
-            
+
             Initialize();
 
             if (!ArrowCloseMenu.Displayed)
