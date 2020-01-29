@@ -40,7 +40,7 @@ namespace RobotPortal
 
             driver = new ChromeDriver(service, options);
             driver.Navigate().GoToUrl("http://192.168.137.1:20080/portal");
-
+            
             verificationErrors = new StringBuilder();
         }
 
@@ -557,7 +557,7 @@ namespace RobotPortal
 
 
         [Test]
-        public void TesteExclusaoPerfilViaConsultaUsuario() //OK
+        public void Test0046_TesteExclusaoPerfilViaConsultaUsuario() //OK
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -577,7 +577,7 @@ namespace RobotPortal
         //    User.TesteExclusaoUsuario();
         //}
         [Test]
-        public void TesteExclusaoUsuario() //OK
+        public void Test0047_TesteExclusaoUsuario() //OK
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -590,7 +590,7 @@ namespace RobotPortal
             User.TesteExclusaoUsuario();
         }
         [Test]
-        public void TesteTrocaEmail() //OK 
+        public void Test0039_TesteTrocaEmail()  
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -599,7 +599,7 @@ namespace RobotPortal
             User.TesteTrocaEmail();
         }
         [Test]
-        public void TesteTrocaSenha() //OK
+        public void Test0040_TesteTrocaSenha() 
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -608,7 +608,7 @@ namespace RobotPortal
             User.TesteTrocaSenha();
         }
         [Test]
-        public void TesteAtualizacaoInformacoesUsuarioExistente() //OK
+        public void Test0041_TesteAtualizacaoInformacoesUsuarioExistente() 
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -619,7 +619,7 @@ namespace RobotPortal
             User.TesteAtualizacaoInformacoesUsuarioExistente();
         }
         [Test]
-        public void ValidarVisualizacaoPerfilUsuarios() //OK
+        public void Test0042_ValidarVisualizacaoPerfilUsuarios() 
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -630,7 +630,7 @@ namespace RobotPortal
             User.ValidarVisualizacaoPerfilUsuarios();
         }
         [Test]
-        public void ValidarInativacaoPerfilConsultaUsuarios() //OK
+        public void Test0043_ValidarInativacaoPerfilConsultaUsuarios() 
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -642,7 +642,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteAdicaoPermissaoPerfilConsultaUsuario() //OK
+        public void Test0044_TesteAdicaoPermissaoPerfilConsultaUsuario() 
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -655,7 +655,7 @@ namespace RobotPortal
             User.TesteAdicaoPermissaoPerfilConsultaUsuario();
         }
         [Test]
-        public void TesteExclusaoPermissaoPerfilConsultaUsuario() //OK
+        public void Test0045_TesteExclusaoPermissaoPerfilConsultaUsuario() //OK
         {
             CtrlChildActionUsers User = new CtrlChildActionUsers(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -669,7 +669,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCopiandoOutroUsuarioExistente() //OK
+        public void Test0025_TesteInclusaoUsuarioCopiandoOutroUsuarioExistente() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -681,7 +681,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioAtribuindoPerfilExistente() //OK
+        public void Test0026_TesteInclusaoUsuarioAtribuindoPerfilExistente() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -692,7 +692,7 @@ namespace RobotPortal
             newUsers.TesteInclusaoUsuarioAtribuindoPerfilExistente();
         }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico() //OK
+        public void Test0027_TesteInclusaoUsuarioCriandoNovoPerfilClienteEspecifico() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -706,7 +706,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes() //OK
+        public void Test0028_TesteInclusaoUsuarioCriandoNovoPerfilTodosClientes() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -731,7 +731,7 @@ namespace RobotPortal
         //    newUsers.TesteInclusaoUsuarioCriandoNovoPerfilTentativaCriarClienteNaoPossuo();
         //}
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica() //OK
+        public void Test0029_TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -744,7 +744,7 @@ namespace RobotPortal
             newUsers.TesteInclusaoUsuarioCriandoNovoPerfil1EquipeEspecifica();
         }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes() //OK
+        public void Test0030_TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes()
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -757,7 +757,7 @@ namespace RobotPortal
             newUsers.TesteInclusaoUsuarioCriandoNovoPerfilTodasEquipes();
         }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao() //OK
+        public void Test0031_TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao() //OK clicar o OK superior da box das permissoes
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -770,7 +770,7 @@ namespace RobotPortal
             newUsers.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAdministradorPermissoesPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao() //OK
+        public void Test0032_TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao() //OK clicar o OK superior da box das permissoes
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -784,7 +784,7 @@ namespace RobotPortal
             newUsers.TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoOperadorPermissoesPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao() //OK
+        public void Test0033_TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoGerentePermissoesPadrao() //OK clicar o OK superior da box das permissoes
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -799,7 +799,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao() //OK
+        public void Test0034_TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoAnalistaPermissoesPadrao() //OK clicar o OK superior da box das permissoes
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -814,7 +814,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos() //OK
+        public void Test0035_TesteInclusaoUsuarioCriandoNovoPerfilCriarTipoTodos() 
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -829,7 +829,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifico() //OK
+        public void Test0036_TesteInclusaoUsuarioCriandoNovoPerfilEspecifico() 
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -844,7 +844,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao() //OK
+        public void Test0037_TesteInclusaoUsuarioCriandoNovoPerfilValidarOpcoesPermissoesPadrao() //OK clicar o OK superior da box das permissoes
 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
@@ -859,7 +859,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica() //OK
+        public void Test0038_TesteInclusaoUsuarioCriandoNovoPerfilEspecifico() 
         {
             CtrlChildActionNewUser newUsers = new CtrlChildActionNewUser(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -869,11 +869,11 @@ namespace RobotPortal
             portal.ChooseAllClients();
             portal.ChooseTeam();
             portal.AcessMenuNewUsers();
-            newUsers.TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica();
+            newUsers.TesteInclusaoUsuarioCriandoNovoPerfilEspecifica();
 
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico() //OK
+        public void Test0048_TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -886,7 +886,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfil1ClienteEspecifico();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTodosClientes() //OK
+        public void Test0060_TesteInclusaoUsuarioNovoPerfilTodosClientes() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -911,7 +911,7 @@ namespace RobotPortal
         //    newProfile.TesteInclusaoUsuarioNovoPerfilClienteNaoPossuo();
         //}
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica() //OK
+        public void Test0049_TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -924,7 +924,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfil1EquipeEspecifica();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTodasEquipes()
+        public void Test0050_TesteInclusaoUsuarioNovoPerfilTodasEquipes()
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -937,7 +937,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTodasEquipes();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoAdministradorPermissaoPadrao() //OK
+        public void Test0051_TesteInclusaoUsuarioNovoPerfilTipoAdministradorPermissaoPadrao() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -950,7 +950,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoAdministradorPermissaoPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoOperadorPermissaoPadrao() //OK
+        public void Test0052_TesteInclusaoUsuarioNovoPerfilTipoOperadorPermissaoPadrao() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -963,7 +963,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoOperadorPermissaoPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoGerentePermissaoPadrao() //OK
+        public void Test0054_TesteInclusaoUsuarioNovoPerfilTipoGerentePermissaoPadrao() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -976,7 +976,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoGerentePermissaoPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoAnalistaPermissaoPadrao() //OK 
+        public void Test0053_TesteInclusaoUsuarioNovoPerfilTipoAnalistaPermissaoPadrao() //OK 
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -989,7 +989,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoAnalistaPermissaoPadrao();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoTodosPerfis() //OK
+        public void Test0055_TesteInclusaoUsuarioNovoPerfilTipoTodosPerfis() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -1002,7 +1002,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoTodosPerfis();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoPerfilEspecifico() //OK
+        public void Test0056_TesteInclusaoUsuarioNovoPerfilTipoPerfilEspecifico() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -1015,7 +1015,7 @@ namespace RobotPortal
             newProfile.TesteInclusaoUsuarioNovoPerfilTipoPerfilEspecifico();
         }
         [Test]
-        public void TesteInclusaoUsuarioNovoPerfilTipoValidaPermissaoPadrao() //OK
+        public void Test0057_TesteInclusaoUsuarioNovoPerfilTipoValidaPermissaoPadrao() //OK
         {
             CtrlChildActionNewProfile newProfile = new CtrlChildActionNewProfile(driver);
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
@@ -1054,7 +1054,7 @@ namespace RobotPortal
         }
 
         [Test]
-        public void TesteAdicaoPermissaoPerfilConsultaPerfil() //OK
+        public void Test0058_TesteAdicaoPermissaoPerfilConsultaPerfil() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
@@ -1068,7 +1068,7 @@ namespace RobotPortal
             profiles.TesteAdicaoPermissaoPerfilConsultaPerfil();
         }
         [Test]
-        public void TesteExclusaoPermissaoPerfilConsultaPerfil() //OK
+        public void Test0059_TesteExclusaoPermissaoPerfilConsultaPerfil() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);
@@ -1082,7 +1082,7 @@ namespace RobotPortal
             profiles.TesteExclusaoPermissaoPerfilConsultaPerfil();
         }
         [Test]
-        public void TesteRemoverPerfil() //OK
+        public void Test0061_TesteRemoverPerfil() //OK
         {
             CtrlChildActionSecurity security = new CtrlChildActionSecurity(driver);
             CtrlCtrlPortalActions portal = new CtrlCtrlPortalActions(driver);

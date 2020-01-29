@@ -480,7 +480,7 @@ namespace RobotPortal
 
         }
 
-        public void TesteInclusaoUsuarioCriandoNovoPerfilPermissãoEspecifica()
+        public void TesteInclusaoUsuarioCriandoNovoPerfilEspecifica()
         {
             //Preenche Novo Perfil
             FillNewProfile();

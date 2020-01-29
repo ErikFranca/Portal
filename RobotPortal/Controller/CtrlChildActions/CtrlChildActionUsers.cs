@@ -69,13 +69,13 @@ namespace RobotPortal
         public void InitializeEditAndSeeUserTst2()
         {
             Thread.Sleep(3000);
-            editUser = FindById("editIcon_171");
-            seeUser = FindByCss("#tr_171 a:nth-child(3) > .md");
+            editUser = FindById("editIcon_180");
+            seeUser = FindByCss("#tr_180 > td:nth-child(7) > a:nth-child(3)");
         }
         public void InitializePermissionScreen()
         {
             Thread.Sleep(3000);
-            addPermission = FindByXpath("/html/body/div[1]/div/div[17]/div/div/div[2]/div/div/div/div/div[4]/table/tbody/tr/td[2]/button[contains(text(),'Adicionar')]");
+            addPermission = FindByXpath("/html/body/div[1]/div/div[16]/div/div/div[2]/div/div/div/div/div[4]/table/tbody/tr[1]/td[2]/button");
             remPermission = FindByXpath("/html/body/div[1]/div/div[17]/div/div/div[2]/div/div/div/div/div[3]/table/tbody/tr/td[2]/button[2][contains(@data-original-title,'Excluir Perfil')]");
             inativePermission = FindByXpath("/html/body/div/div/div/div/div/div/div/div/div/div/div/table/tbody/tr/td/button[contains(@data-original-title,'Inativar Permissão')]");
         }
@@ -103,8 +103,8 @@ namespace RobotPortal
         public void InicializeEditScreen()
         {
             Thread.Sleep(3000);
-            editDate = FindById("date_171");
-            saveIcon = FindByCss("#saveIcon_171 > .md");
+            editDate = FindById("date_180");
+            saveIcon = FindById("saveIcon_180");
         }
         public void InitializeChangePassword()
         {
