@@ -516,29 +516,6 @@ namespace RobotPortal
 
         }
 
-        public void PermissionNewUser()
-        {
-            SwitchFrameInitialize();
-            Data();
-
-            SendKeys(newLogin, "TestePermissao1");
-            SendKeys(newEmail, "teste@teste.com.br");
-            Click(next);
-
-            Type();
-            Click(setNew);
-
-            permissionuserInitialize();
-            SelectByText(LoginTypeSelectPicker, "Gerente");
-            Click(ButtonNext);
-            //SendKeys(FieldObs, "TestePermissão");
-
-            Click(BoxPermissionDefaut);
-            Click(ButtonRegister);
-            AcceptAlert();
-
-        }
-
         public void NewUserPermission()
         {
             SwitchFrameInitialize();

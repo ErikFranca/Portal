@@ -289,7 +289,7 @@ namespace RobotPortal
             ResultInitialize();
 
 
-            Assert.That(FieldResultDataEnd.Text, Does.Contain("2020-01-21"));
+            Assert.That(FieldResultDataEnd.Text, Does.Contain("2020"));
 
         }
 

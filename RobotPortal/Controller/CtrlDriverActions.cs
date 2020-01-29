@@ -2,14 +2,12 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
-using OpenQA.Selenium.Interactions;
-using System.IO;
-using System.Net;
+using System.Threading;
+using OpenQA.Selenium.Support.PageObjects;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace RobotPortal
 {
@@ -21,8 +19,9 @@ namespace RobotPortal
         public CtrlDriverActions(IWebDriver driver)
         {
             this.driverAction = driver;
+            
         }
-
+        
         public void AssertFalseResult(string element)
         {
             Assert.IsFalse(IsElementPresent(By.CssSelector(element)));
@@ -67,7 +66,7 @@ namespace RobotPortal
             Thread.Sleep(1000);
             string AlertText = driverAction.SwitchTo().Alert().Text.ToString();
             string AlertText1 = AlertText.Replace("Senha do usuário: ", "");
-           
+
             return AlertText1;
         }
         public IWebElement FindByCss(string Css)
@@ -78,6 +77,12 @@ namespace RobotPortal
         {
             return driverAction.FindElement(By.XPath(xpath));
         }
+
+        public IWebElement FindsByXpath(string xpath)
+        {
+            return driverAction.FindElement(By.XPath(xpath));
+        }
+
         public IWebElement FindByName(string Name)
         {
             return driverAction.FindElement(By.Name(Name));
@@ -88,13 +93,19 @@ namespace RobotPortal
             Thread.Sleep(1000);
             driverAction.SwitchTo().Frame(Frame);
         }
+
+        public void SwitchParentFrame()
+        {
+            Thread.Sleep(1000);
+            driverAction.SwitchTo().ParentFrame();
+        }
         public void SendKeys(IWebElement element, string content)
         {
             Thread.Sleep(1000);
             element.SendKeys(content);
         }
 
-        
+
 
         public void WaitForPageToLoad(IWebDriver driver)
         {
@@ -128,7 +139,7 @@ namespace RobotPortal
                     return false;
                 }
             });
-        }        
+        }
 
         public void JavaScriptClick(IWebElement element)
         {
@@ -141,7 +152,7 @@ namespace RobotPortal
         {
             Thread.Sleep(1000);
             elemento.Clear();
-            
+
         }
 
         public void Wait(By elemento)
@@ -158,7 +169,7 @@ namespace RobotPortal
             List<string> list = new List<string>();
             IList<IWebElement> oRadioButton = driverAction.FindElements(By.XPath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr/td[1]/center/div/input"));
             int count1 = oRadioButton.Count();
-                
+
             for (int i = 1; i <= count; i++)
             {
                 var permission = driverAction.FindElement(By.CssSelector("tbody > tr:nth-child(" + (i) + ") > td:nth-child(2)")).Text;
@@ -208,10 +219,36 @@ namespace RobotPortal
             for (int i = 0; i < num; i++)
             {
                 string namepermission = permissions.ElementAt(i);
-                IWebElement Box = FindByXpath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr[contains(string(), '"+(namepermission) +"')]/td/center/div/input");
+                IWebElement Box = FindByXpath("/html/body/div/div[2]/div[1]/div[3]/div/form/div[1]/div/table/tbody/tr[contains(string(), '" + (namepermission) + "')]/td/center/div/input");
                 Click(Box);
             }
 
+        }
+
+        public void PermissionsUserSelector()
+        {
+            Thread.Sleep(3000);
+            IWebElement SelectBoxUser = driverAction.FindElement(By.XPath("//*[@class='tab-pane active']//tr//img[contains(@src, 'contacts.svg')]/../..//input[@type='checkbox']"));
+            IList<IWebElement> CheckBoxUser = driverAction.FindElements(By.XPath("//*[@class='tab-pane active']//tr//img[contains(@src, 'contacts.svg')]/../..//input[@type='checkbox']"));
+            int count = CheckBoxUser.Count();
+            bool BoxValue = false;
+
+            for (int i = 0; i < count; i++)
+            {
+                while (i <= count)
+                {
+                    BoxValue = SelectBoxUser.Selected;
+                    if (BoxValue == true)
+                    {
+
+                    }
+                    else if (BoxValue == false)
+                    {
+                        Click(SelectBoxUser);
+                    }
+                }
+
+            }
         }
 
 
